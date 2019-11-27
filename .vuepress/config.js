@@ -13,6 +13,8 @@ module.exports = {
 
         sidebar: [
             ['/', 'Introduction'],
+            'infrastructure-design',
+            'iac',
         ],
     },
 }
