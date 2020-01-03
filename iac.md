@@ -112,13 +112,25 @@ Modules are very powerful: you can nest modules and have them interact with each
 ## Developing & Testing IaC
 Before you begin, you should install the [terraform extension for VS Code](https://marketplace.visualstudio.com/items?itemName=mauve.terraform). This will give you a code formatter, syntax highlighting, tab completion, and quick navigation.
 
-Infrastructure in the nonprod & prod accounts may only be created by terraform running on your Jenkins server -- your own AWS login will not be able to create anything. If you wish to test terraform from your own machine, you can log in to the sandbox with the (aws-adfs)[https://github.com/venth/aws-adfs] utility.
+You may check your TF code compiles with the `terraform validate` command. You will need to `terraform init` your module beforehand. If the `init` gives you errors about the S3 bucket, that is OK: the state bucket is only needed when you are planning/deploying/destroying.
+
+Infrastructure in the nonprod & prod accounts may only be created by terraform running on your Jenkins server -- your own AWS login will not be able to create anything. If you wish to test terraform from your own machine, you can log in to the sandbox with the [aws-adfs](https://github.com/venth/aws-adfs) utility.
 
 :::tip `aws-adfs` & Duo
 Before using the `aws-adfs` utility, you will need to configure Duo to automatically send you push notifications.
 
-*@TODO instructions*
+When logging in to [aws.northwestern.edu](https://aws.northwestern.edu), hit the *Settings* tab on your Duo popup, then *My Settings & Devices*.
+
+Choose *Automatically Send this Device a Duo Push* to enable this functionality.
 :::
+
+Once installed, you can run the utility with the below arguments. Your username should be in the format `ads\netid`.
+
+```sh
+aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:webservices --region us-east-2
+```
+
+Once logged in, the utility will prompt you to choose the AWS account to use.
 
 ## Sharing Resources
 The AS Cloud Services team will create and manage shared resources in your account -- things like an ALB, IP subnets, and the VPC. There will be one repository for each department's AWS accounts, with a base module covering everything the account needs and a sandbox/nonprod/production module to build the resources out in an appropriate manner.
