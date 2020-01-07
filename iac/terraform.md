@@ -1,4 +1,4 @@
-# Infrastructure as Code
+# Terraform
 Infrastructure as Code (IaC) is a way to define what resources & configuration you need to run an application. These declarations can then be stored in git. This approach eliminates the potential for human error when setting up multiple servers & configuration drift between environments.
 
 [Terraform](https://www.terraform.io/) is the vendor-agnostic IaC tool that Administrative Systems uses. When you write your IaC, terraform will determine which service providers you need and will automatically download the appropriate [provider drivers](https://www.terraform.io/docs/providers/index.html). 
@@ -165,7 +165,7 @@ The load balancer will require a certificate. There is a ready-made module for g
 
 The per-application environment module will need to know the ARN for the load balancer listenen, so it can tie the target groups to it.
 
-![Terraform module relationships](./assets/sharing-resources.png)
+![Terraform module relationships](../assets/sharing-resources.png)
 
 Generating the certificate with the module that the AS Cloud Services team has already provided is easy:
 

@@ -1,4 +1,4 @@
-# Infrastructure Design
+# AWS Account Structure
 The AS AWS accounts are part of an overall Northwestern billing organization. Each department inside AS will receive three accounts. 
 
 Our preferred region is `us-east-2`; it has the lowest latency from campus. This should be chosen unless there is a reason to choose different region(s).
@@ -19,6 +19,6 @@ Each account will have an S3 bucket for use by terraform to hold its state files
 
 If and when you require it, an Application Load Balancer (ALB) can be created for the account by the AS Cloud Services team. This is an always-on service that may not be necessary if you are only using serverless services like API Gateway and CloudFront. To keep costs down, it is preferrable to build one ALB per account -- it can be shared by many applications.
 
-![Account Overview](./assets/account-overview.png)
+![Account Overview](../assets/account-overview.png)
 
 Not all AWS resources live inside the VPC. For example, DynamoDB runs entirely on Amazon-managed networks and is accessible over the internet. A private DyanmoDB is not offered; it will never be able to access servers in our data centers over the VPN connection. Other services, like EC2 and Lambda, may run on AWS-managed networks by default, with an option to assign them subnets inside of the VPC.

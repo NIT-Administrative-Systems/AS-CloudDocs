@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'AWS for Administrative Systems',
+    title: 'Enterprise Cloud Development & Operations',
     description: 'Docs for NUIT AS staff on our cloud implementation.',
     dest: '.build/docs',
 
@@ -13,8 +13,28 @@ module.exports = {
 
         sidebar: [
             ['/', 'Introduction'],
-            'infrastructure-design',
-            'iac',
+            {
+                title: 'Infrastructure',
+                collapsable: false,
+                children: [
+                    'aws-account-design',
+                ].map(file => 'infrastructure/' + file),
+            },
+            {
+                title: 'Infrastructure as Code',
+                collapsable: false,
+                children: [
+                    'terraform',
+                ].map(file => 'iac/' + file),
+            },
+            {
+                title: 'CI & CD',
+                collapsable: false,
+                children: [
+                    'jenkins',
+                    'jenkins-ecs-agent'
+                ].map(file => 'ci-cd/' + file),
+            },
         ],
     },
 }
