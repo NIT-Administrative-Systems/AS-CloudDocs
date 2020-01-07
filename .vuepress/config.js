@@ -18,6 +18,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'aws-account-design',
+                    'vpc-ip-addr',
                 ].map(file => 'infrastructure/' + file),
             },
             {
