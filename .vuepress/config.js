@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Enterprise Cloud Development & Operations',
-    description: 'Docs for NUIT AS staff on our cloud implementation.',
+    title: 'AS Cloud Docs',
+    description: 'Docs for Northwestern IT staff on our cloud implementation.',
     dest: '.build/docs',
 
     themeConfig: {
