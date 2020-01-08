@@ -16,7 +16,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: .vuepress/dist
+  local_dir: .build/docs
   target_branch: gh-pages
   on:
     branch: stable

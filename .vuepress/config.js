@@ -2,6 +2,7 @@ module.exports = {
     title: 'AS Cloud Docs',
     description: 'Docs for Northwestern IT staff on our cloud implementation.',
     dest: '.build/docs',
+    base: '/AS-CloudDocs/',
 
     themeConfig: {
         repo: 'NIT-Administrative-Systems/AS-CloudDocs',
