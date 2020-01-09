@@ -26,7 +26,11 @@ module.exports = {
                 title: 'Infrastructure as Code',
                 collapsable: false,
                 children: [
-                    'terraform',
+                    'terraform-concepts',
+                    'as-tf-modules',
+                    'example-tf',
+                    'available-modules',
+                    'state-buckets'
                 ].map(file => 'iac/' + file),
             },
             {
