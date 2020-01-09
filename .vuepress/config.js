@@ -37,6 +37,13 @@ module.exports = {
                     'jenkins-ecs-agent'
                 ].map(file => 'ci-cd/' + file),
             },
+            {
+                title: 'GitHub',
+                collapsable: false,
+                children: [
+                    'settings-permissions',
+                ].map(file => 'github/' + file),
+            },
         ],
     },
 }
