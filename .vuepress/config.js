@@ -12,8 +12,13 @@ module.exports = {
         editLinkText: 'Edit Page',
         lastUpdated: true,
 
-        sidebar: [
-            ['/', 'Introduction'],
+        sidebar: [{
+                title: 'Introduction',
+                collapsable: false,
+                children: [
+                    ['/', 'Overview'],
+                ],
+            },
             {
                 title: 'Infrastructure',
                 collapsable: false,
