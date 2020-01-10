@@ -12,8 +12,13 @@ module.exports = {
         editLinkText: 'Edit Page',
         lastUpdated: true,
 
-        sidebar: [
-            ['/', 'Introduction'],
+        sidebar: [{
+                title: 'Introduction',
+                collapsable: false,
+                children: [
+                    ['/', 'Overview'],
+                ],
+            },
             {
                 title: 'Infrastructure',
                 collapsable: false,
@@ -26,7 +31,11 @@ module.exports = {
                 title: 'Infrastructure as Code',
                 collapsable: false,
                 children: [
-                    'terraform',
+                    'terraform-concepts',
+                    'as-tf-modules',
+                    'example-tf',
+                    'available-modules',
+                    'state-buckets'
                 ].map(file => 'iac/' + file),
             },
             {
