@@ -21,7 +21,7 @@ Here is a responsibility assignment matrix that covers common tasks/functions.
 | Remove staff access to cloud resources                             | A             | R             | C               |            | 
 | Jenkins server (EC2 & Jenkins service) maintenance                 | C             | A             | I               | I          | 
 | Jenkins plugin maintenance                                         | A             | C             | I               | I          | 
-| Creating Jenkins jobs (unconfigured) & setting permissions         | A             |               | I               | I          | 
+| Creating Jenkins jobs (unconfigured) & setting permissions         | AR            |               | C               | I          | 
 | Writing & maintaining Jenkins pipelines                            | C             |               | A               | R          | 
 | VPC & VPN set-up/maintenance                                       | C             | AR            | C               | I          | 
 | Assigning subnets for applications                                 | A             |               | I               | I          | 
@@ -30,3 +30,4 @@ Here is a responsibility assignment matrix that covers common tasks/functions.
 | Reviewing pull requests affecting IaC                              | C             |               | AR              | I          | 
 | Reviewing pull requests for applications                           |               |               | AR              | I          | 
 | Application deployments                                            |               |               | A               | R          | 
+
