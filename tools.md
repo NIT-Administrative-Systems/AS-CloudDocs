@@ -22,3 +22,10 @@ All developers should install the following extensions:
 - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 - [Terraform](https://marketplace.visualstudio.com/items?itemName=mauve.terraform)
 - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+
+## Sentry
+[Sentry](https://sentry.io/welcome/) is a SaaS provider that you can integrate into your application's default exception handler. Any errors or exceptions that occurr are sent up to their dashboard, where reports & alerts can be generated.
+
+This service is maintained by the EACD team and can be made available to any developer in AS upon request.
+
+Once you have been added to the Northwestern IT organization, Sentry will allow you to create new projects and will provide documentation for your language/framework of choice.
