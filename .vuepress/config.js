@@ -17,6 +17,8 @@ module.exports = {
                 collapsable: false,
                 children: [
                     ['/', 'Overview'],
+                    'roles-responsibilities',
+                    'tools',
                 ],
             },
             {
