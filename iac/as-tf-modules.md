@@ -57,4 +57,4 @@ Historically, shared account resources were not created with terraform. VPC IDs/
 The AS Cloud Services team is working to import these into terraform. If you find you need an attribute that isn't available, please let the AS Cloud Services team know!
 :::
 
-Declaring a VPC resource in an application's terraform module would be wrong: the VPC already exists, and declaring one would try to create a second VPC. Instead, an application would want to declare a remote resource and access information about about the already-created VPC.
+**Declaring a VPC resource in an application's terraform module would be wrong**: the VPC already exists, and declaring one would try to create a second VPC. Instead, an application would want to declare a remote resource and access information about about the already-created VPC.
