@@ -1,12 +1,10 @@
 # Overview
 introductory text
 
-https://12factor.net/
+- purpose of this documentation
+- links to cloud initiative
+- vocabulary
 
-- AWS is the cloud provider of choice
-- Terraform for building AWS resources
-- Github for version control
-- Jenkins for building, testing, and deploying
-- VS Code for development
-
-something about considering serverless before containers, fargate before EC2
+- app architecture section
+- https://12factor.net/
+- something about considering serverless before containers, fargate before EC2
