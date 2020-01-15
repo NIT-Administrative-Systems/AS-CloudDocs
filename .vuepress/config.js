@@ -27,6 +27,7 @@ module.exports = {
                 children: [
                     'aws-account-design',
                     'vpc-ip-addr',
+                    'alb',
                 ].map(file => 'infrastructure/' + file),
             },
             {
