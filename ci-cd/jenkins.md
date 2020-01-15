@@ -117,7 +117,7 @@ pipeline {
 ## Scheduling Deployments
 You must regularly re-deploy your application. Our minimum is once per week, but more frequent deployments are encouraged.
 
-Re-deploying on a schedule, even when no changes are pending deployment, ensures that your pipeline & deployment process valid. Some applications may go into a period of development inactivity; it's good to know that you can apply a critical security patch without worrying if your pipeline still works after not being used for nine months.
+Re-deploying on a schedule, even when no changes are pending deployment, ensures that your pipeline & deployment process is valid. Some applications may go into a period of development inactivity; it's good to know that you can apply a critical security patch without worrying if your pipeline still works after not being used for nine months.
 
 You can create a pair of regular (not multi-branch) pipelines that trigger your main Jenkinsfile's develop/qa & production branch builds. 
 
