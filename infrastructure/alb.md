@@ -8,7 +8,7 @@ The EACD-CloudOps group provisions an ALB intended to be shared by several micro
 :::warning Customer-Facing Applications
 The shared account ALB is **not** intended for use by customer-facing web applications. 
 
-Only one app may create a listener for port 443. Using non-standard ports for APIs is a good trade-off of cost:convenience, since most of our services are going to be proxied through the API service registry anyway.
+Only one app may create a listener for port 443. Using non-standard ports for APIs is a good trade-off of cost:convenience, since most of our services are going to be proxied through the API gateway provider anyway.
 
 You can provision your own ALB directly with terraform, or by using our [ALB terraform module](../iac/available-modules.md).
 :::
