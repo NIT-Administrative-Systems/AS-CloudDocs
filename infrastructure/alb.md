@@ -3,7 +3,15 @@ Application Load Balancers (ALBs) are Amazon's latest load balancer offering. Th
 
 If your application requires a load balancer, an ALB should be the first choice. There may be some advanced cases where a Network Load Balancer (NLB) is appropriate instead.
 
-The EACD-CloudOps group provisions an ALB intended to be shared by several applications in each AWS account. The information needed to use this shared ALB is available through your shared account resource IaC module.
+The EACD-CloudOps group provisions an ALB intended to be shared by several microservice or API applications in each AWS account. The information needed to use this shared ALB is available through your shared account resource IaC module.
+
+:::warning Customer-Facing Applications
+The shared account ALB is **not** intended for use by customer-facing web applications. 
+
+Only one app may create a listener for port 443. Using non-standard ports for APIs is a good trade-off of cost:convenience, since most of our services are going to be proxied through the API service registry anyway.
+
+You can provision your own ALB directly with terraform, or by using our [ALB terraform module](../iac/available-modules.md).
+:::
 
 ## ALB Concepts
 Application Load Balancers have a few moving parts that you will need to understand.
@@ -25,8 +33,8 @@ For a standard application in the non-prod environment, you would create:
 
 If you need more environments in nonprod, that is fine -- you should still only use one listener. 
 
-## Using the ALB
-Using the ALB is a two-step process. 
+## Using the Shared ALB
+Using the shared ALB is a two-step process. 
 
 You will need to run a module for the AWS account (nonprod & prod), as well as a per-environment module.
 
