@@ -53,6 +53,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'settings-permissions',
+                    'policies',
                 ].map(file => 'github/' + file),
             },
         ],
