@@ -28,6 +28,7 @@ module.exports = {
                     'aws-account-design',
                     'vpc-ip-addr',
                     'alb',
+                    'vapor',
                 ].map(file => 'infrastructure/' + file),
             },
             {
