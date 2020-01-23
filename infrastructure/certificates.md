@@ -8,7 +8,14 @@ Amazon will only issue Domain Verified (DV) certificates. Issuing & renewing Ext
 You may request a SAN certificate that covers several domains; this is useful for a single ALB listener that covers multiple environments.
 
 ## Usage
-Certificate requests should be made as IaC [with terraform](https://www.terraform.io/docs/providers/aws/d/acm_certificate.html).
+Certificate requests should be made as IaC [with terraform](https://www.terraform.io/docs/providers/aws/r/acm_certificate.html).
+
+:::tip entapp
+The `entapp.northwestern.edu` zone is managed by the EACD-CloudOps team.
+
+We offer an [`entapp` certificate module](../iac/available-modules.md), and can offer expedited processing on DNS requests for this zone.
+:::
+
 
 When you create a certificate request, ACM requires you to prove that you own the domain(s) you are requesting a certificate for. Until this is done, ACM will not create a certificate & attempting to reference the ARN in terraform will fail.
 
