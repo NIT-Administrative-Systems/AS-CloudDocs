@@ -10,6 +10,13 @@ You may request a SAN certificate that covers several domains; this is useful fo
 ## Usage
 Certificate requests should be made as IaC [with terraform](https://www.terraform.io/docs/providers/aws/r/acm_certificate.html).
 
+:::tip entapp
+The `entapp.northwestern.edu` zone is managed by the EACD-CloudOps team.
+
+We offer an [`entapp` certificate module](../iac/available-modules.md), and can offer expedited processing on DNS requests for this zone.
+:::
+
+
 When you create a certificate request, ACM requires you to prove that you own the domain(s) you are requesting a certificate for. Until this is done, ACM will not create a certificate & attempting to reference the ARN in terraform will fail.
 
 The request will be visible in the ACM console, at the 'Pending Validation' status. Amazon will ask you to create a subdomain for each domain you've requested a certificate for. Being able to create a subdomain on the requested domain(s) proves that you control that domain.
