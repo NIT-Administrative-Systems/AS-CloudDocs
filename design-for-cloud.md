@@ -13,6 +13,14 @@ AWS has [a page dedicated to extolling the virtues of their serverless platform]
 - Lambda's maximum execution time is 15 minutes; longer-running work is unsuitable
 - API Gateway requests time out after 29 seconds; long-running API calls are unsuitable
 
+:::warning Design for the Limits
+When choosing a AWS serverless service, you **must** research the limits outlined in that service's documentation.
+
+Consider how your application will interact with these limits. If you have an asynchronous process using Lambda that merges PDFs, how can you guarantee it will complete its work within the 15-minute run period? If it exceeds the limit, how can your app gracefully handle the failure?
+
+Most AWS services have a 'Requirements and Restrictions' (or similar) section that will document the limitations.
+:::
+
 There are also things that are *different* in a serverless model -- not necessarily better/worse, but may make shifting an on-prem application to serverless challenging. 
 
 As an example: your on-prem application may assume [ghostscript](https://www.ghostscript.com/) is installed on its app server. Whenever a user uploads a file, you use ghostscript to build an "All Documents" download that compiles the new doc with several other ones, then store the file. In a serverless approach, this model doesn't work: we can't install utilities on the Lambda runtime, and Lambdas do not have persistent file storage. You would instead upload the file to S3, which could trigger a separate process that compiles the PDFs.
