@@ -1,6 +1,8 @@
 # Overview
 Welcome to the Northwestern IT Administrative Systems cloud documentation. This site is a resource for Administrative Systems staff who are building & operating applications in the cloud as part of our greater [NUIT cloud initatives](https://www.cloud.northwestern.edu/).
 
+This is a living document. It will grow and evolve as our cloud practice matures. All Northwestern developers are welcome to contribute to this website.
+
 ## Purpose
 The purpose of this site is to document requirements, recommendations, and best practices for Administrative Systems' cloud applications. 
 
