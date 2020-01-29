@@ -38,6 +38,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'terraform-concepts',
+                    'tf-upgrading',
                     'as-tf-modules',
                     'example-tf',
                     'available-modules',
