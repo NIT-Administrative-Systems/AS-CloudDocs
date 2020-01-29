@@ -106,3 +106,18 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
 Once your v0.12 changes are valid, moving the new module into production should be painless. The underlying terraform code may have been updated, but the `terraform plan` should be unchanged. No changes should be made to your infrastructure as a result of this upgrade.
 
 After you run `terraform apply` with the new version of terraform, that module's `tfstate` is updated. This occurs even if the `terraform apply` command fails to fully execute. You cannot revert to a older version fo terraform. This is applicable even for minor version bumps (e.g. 0.12.19 to 0.12.20).
+
+## VS Code Support
+If you are using the Terraform VS Code extension, you will need to make adjustments to its configuration so it will work with the v0.12 language changes.
+
+In your VS Code setting JSON file, set these options:
+
+```json
+{
+    // . . .
+    "terraform.indexing.enabled": false,
+    "terraform.languageServer.enabled": true
+}
+```
+
+Restart VS Code. It should prompt you to install & run the Terraform Language Server. Once complete, you should regain the full use of the extension.
