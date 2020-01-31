@@ -19,8 +19,6 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
 
 1. Create a new git branch for the upgrade
 
-    This will introduce 
-
 1. Create a `.terraform-version` file in the root of your project. This file is used by `tfenv` to determine what version to install
 
     ```sh
@@ -76,6 +74,16 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
 
     # Leave the one in base, but remove all others:
     $ rm ./prod/versions.tf ./nonprod/versions.tf ./sandbox/versions.tf
+    ```
+
+1. If you are using any of the [AS shared modules](./available-modules.md), you will need to use their `tf-0.12` branch. All you need to do is add/update `?ref=<branch name>` in the git URLs.
+
+    ```hcl
+    module "alb" {
+        source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//alb?ref=tf-0.12"
+
+        // . . .
+    }
     ```
 
 1. Run the validator tool for each module to see any syntax errors
