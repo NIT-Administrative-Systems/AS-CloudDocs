@@ -6,11 +6,13 @@ Infrastructure as Code (IaC) is a way to define what resources & configuration y
 For the most part, AS developers will only need to be concerned with the [AWS provider](https://www.terraform.io/docs/providers/aws/index.html). But if the need arises, you can use terraform to build infrastructure for one app across several cloud vendors.
 
 :::danger Terraform v0.10
-At this time, Terraform v0.10 is installed on all Jenkins servers.
+At this time, Terraform v0.10 is the default installed on all Jenkins servers.
 
-When reviewing Terraform documentation, verify the docs are for v0.11 and before; v0.12 made significant changes to the syntax.
+Be aware of your target Terraform version when reading & writing code. v0.12 made significant changes to the syntax.
 
-If you are testing locally, you can use [tfenv](https://github.com/tfutils/tfenv) to swap between versions.
+When reviewing Terraform documentation, verify the docs are either for v0.11 and before (pre-2020 AS terraform modules) or for v0.12 (written in 2020 and beyond). 
+
+You should upgrade your older modules to v0.12 -- see the AS [upgrade guide](./tf-upgrading.md) for guidance.
 :::
 
 ## Concepts
