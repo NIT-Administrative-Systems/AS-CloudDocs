@@ -13,6 +13,13 @@ These legacy-style jobs should be replaced by pipelines files kept in version co
 
 We typically keep pipeline files in a `.jenkins/` folder. Even if you only have a single Jenkinsfile, it is advisable to put it in the folder; changing it later is a nuisance. 
 
+## Accessing GitHub Repositories
+Jenkins must authenticate to GitHub.com as a user in order to clone code. This user must be a collaborator on the repository that you want Jenkins to work with.
+
+All Jenkins servers have the [`GitHub-awsCloudOpsCJT`](#credentials) credential for the [awsCloudOpsCJT user](https://github.com/awsCloudOpsCJT) that may be used. You may create a user specifically for your team if you want to more tightly control access to your repositories. Creating a team-specific user is recommended if you will be granting it write permission so Jenkins can update [commit statuses](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-status-checks).
+
+If you need awsCloudOpsCJT or a team-specific user added as a collaborator, contact the EACD-CloudOps group -- self-service tooling for this is not available yet, sorry!
+
 ## Configuration
 As much configuration as possible should be included in the Jenkinsfile. 
 
