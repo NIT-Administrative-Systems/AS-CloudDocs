@@ -48,7 +48,9 @@ resource "aws_ssm_parameter" "secure_param" {
     environment = "tech-demo"
   }
 
-  # The parameter will be created with a dummy value, and then a human will need to update it.
+  # The parameter will be created with a dummy value. Jenkins will update it with 
+  # the final value in a subsequent pipeline step.
+  #
   # TF will not override the parameter once it has been created.
   lifecycle {
     ignore_changes = [value]
