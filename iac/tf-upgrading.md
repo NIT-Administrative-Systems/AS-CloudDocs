@@ -76,6 +76,26 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
     $ rm ./prod/versions.tf ./nonprod/versions.tf ./sandbox/versions.tf
     ```
 
+1. If you have pinned the AWS provider version for your module, review this and decide if it is appropriate to update the version.
+
+    This was done for some IaC modules. The older provider uses older AWS APIs, allowing the module to build without making changes that Amazon needs for the newer APIs.
+
+    This is a good opportunity to review and upgrade to the latest provider.
+
+    If you have pinned the provider version, it will look like this:
+
+    ```hcl
+    provider "aws" {
+        # Pinned to 1.33 and older
+        version = "<= 1.13.0"
+
+        # Pinned to 1.60.x
+        version = "~> 1.60"
+    }
+    ```
+
+    You should at least migrate to the 2.x provider. The latest version can be found on the [Terraform registry](https://registry.terraform.io/providers/hashicorp/aws). If you move to the latest evrsion, you can set up Dependabot for the repository and receive pull requests when new versions of the provider are available.
+
 1. If you are using any of the [AS shared modules](./available-modules.md), you will need to use their `tf-0.12` branch. All you need to do is add/update `?ref=<branch name>` in the git URLs.
 
     ```hcl
@@ -113,7 +133,7 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
 ## Going Live with the Upgrade
 Once your v0.12 changes are valid, moving the new module into production should be painless. The underlying terraform code may have been updated, but the `terraform plan` should be unchanged. No changes should be made to your infrastructure as a result of this upgrade.
 
-After you run `terraform apply` with the new version of terraform, that module's `tfstate` is updated. This occurs even if the `terraform apply` command fails to fully execute. You cannot revert to a older version fo terraform. This is applicable even for minor version bumps (e.g. 0.12.19 to 0.12.20).
+After you run `terraform apply` with the new version of terraform, that module's `tfstate` is updated. This occurs even if the `terraform apply` command fails to fully execute. You cannot revert to a older version of terraform. This is applicable even for minor version bumps (e.g. 0.12.19 to 0.12.20).
 
 ## VS Code Support
 If you are using the Terraform VS Code extension, you will need to make adjustments to its configuration so it will work with the v0.12 language changes.
