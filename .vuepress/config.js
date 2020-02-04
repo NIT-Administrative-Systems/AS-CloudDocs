@@ -30,6 +30,7 @@ module.exports = {
                     'vpc-ip-addr',
                     'alb',
                     'certificates',
+                    'secrets',
                     'vapor',
                 ].map(file => 'infrastructure/' + file),
             },
@@ -49,6 +50,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'jenkins',
+                    'shared-libs',
                     'jenkins-ecs-agent'
                 ].map(file => 'ci-cd/' + file),
             },
