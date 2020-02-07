@@ -106,15 +106,6 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
     }
     ```
 
-1. Run the validator tool for each module to see any syntax errors
-
-    ```sh
-    $ cd nonprod
-    $ terraform init # errors about the state file are expected and OK
-    $ terraform validate
-    $ rm -rf .terraform
-    ```
-
 1. Review your terraform code. Fix any errors raised by the validator tool & any other issues you identify.
 
 1. Update your Jenkins pipeline files to use `tfenv`.
