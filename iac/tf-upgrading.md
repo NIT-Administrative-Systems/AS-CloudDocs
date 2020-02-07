@@ -106,7 +106,9 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
     }
     ```
 
-1. Review your terraform code. Fix any errors raised by the validator tool & any other issues you identify.
+1. Review your terraform code. Fix any errors raised by the upgrade tool & any other issues you identify.
+
+    Warnings will be called out when you run the upgrade command, but they will be annotated in the code as well. Look for `TF-UPGRADE-TODO` comments.
 
 1. Update your Jenkins pipeline files to use `tfenv`.
 
