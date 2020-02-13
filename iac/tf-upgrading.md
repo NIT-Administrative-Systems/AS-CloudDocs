@@ -106,11 +106,38 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
     }
     ```
 
-1. Review your terraform code. Fix any errors raised by the upgrade tool & any other issues you identify.
+1. Run the validator tool for each module and review your Terraform code.
+
+    ```sh
+    $ cd nonprod
+    $ terraform init # errors about the state file are expected and OK
+    $ terraform validate
+    $ rm -rf .terraform
+    ```
+
+    Fix any errors raised by the upgrade tool & any other issues you identify.
 
     Warnings will be called out when you run the upgrade command, but they will be annotated in the code as well. Look for `TF-UPGRADE-TODO` comments.
 
-1. Update your Jenkins pipeline files to use `tfenv`.
+1. Log in to AWS from your console and review the plan
+
+    You can use the [aws-adfs tool](./terraform-concepts.md#developing-testing-iac) to log in to AWS on your console. Select the correct account (e.g. planning dev = nonprod AWS account) when logging in.
+
+    ```sh
+    $ cd nonprod/
+    $ terraform init
+    $ terraform plan
+    $ rm -rf .terraform
+    ```
+
+    In most cases, the plan will show no changes. There may be exceptions to this. You can review older deployments to determine if that was normal in v0.10; if it was, the v0.10 and v0.12 plans should reflect that the same resources need to change. The exceptions we know about are:
+
+    - API Gateway deployments may show up if a run will always re-deploy the API Gateway
+    - Lambdas may show up if the code or dependencies have changed, since the last modified date, source code hash, and/or etag (for the zip containing the code) have changed
+
+    You may not be able to generate a complete plan. If you are using encrypted SSM parameters with a custom KMS key, you will not have enough access to decrypt the values, which Terraform wants to consider for its plan.
+
+1. Update your Jenkins pipeline files to use `tfenv` and auto-approve the plan
 
     You will need a new stage before `terraform` is used to grab the correct version for your project. In the context of your `stages` block, prepend:
 
@@ -119,6 +146,16 @@ You should carefully review [the official upgrade guide](https://www.terraform.i
         steps {
             sh 'tfenv install'
             sh 'terraform -version'
+        }
+    }
+    ```
+
+    You will also need to add the `-auto-approve` flag to `terraform apply`:
+
+    ```groovy
+    stage ('Existing Apply Stage') {
+        steps {
+            sh 'terraform apply -auto-approve -no-color'
         }
     }
     ```
