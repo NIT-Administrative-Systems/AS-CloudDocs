@@ -47,7 +47,8 @@ module.exports = {
                     'as-tf-modules',
                     'example-tf',
                     'available-modules',
-                    'state-buckets'
+                    'state-buckets',
+                    'tf-import'
                 ].map(file => 'iac/' + file),
             },
             {
