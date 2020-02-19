@@ -12,7 +12,7 @@ resource "aws_cloudwatch_log_group" "example" {
 }
 ```
 
-2. (Admin) Login to the AWS account with the `aws-adfs`utility; select Admin role.
+2. (Admin) Login to the AWS account with the `aws-adfs` utility; select Admin role.
 3. (Admin) `terraform import` doesn't work with a dynamic provider config (known limitation). 
     - Temporarily/locally hard-code the region in the provider block:
     ```hcl
@@ -42,7 +42,7 @@ resource "aws_cloudwatch_log_group" "example" {
 ### Scenario
 AWS Lambda functions automatically store log output in Amazon CloudWatch Logs by creating a CloudWatch Logs group for your Lambda function, named `/aws/lambda/{lambda-function-name}`.
 
-Optionally, you could expliticly manage the CloudWatch Log group for a Lambda in your IaC. 
+Optionally, you could explicitly manage the CloudWatch Log group for a Lambda in your IaC. 
 
 ```hcl
 resource "aws_lambda_function" "datahub_lambda" {
@@ -51,13 +51,13 @@ resource "aws_lambda_function" "datahub_lambda" {
 }
 
 # optional 
-resource "aws_cloudwatch_log_group" "datahub_ss_lambda" {
+resource "aws_cloudwatch_log_group" "example" {
   name              = "/aws/lambda/${var.lambda_function_name}"
   retention_in_days = 14
 }
 ```
 
-Managing the LogGroup in your IaC could be beneficial in order to set a log retention (logs that never expire accumulate and become difficult to search).
+Managing the Log Group in your IaC could be beneficial in order to set a log retention (logs that never expire accumulate and become difficult to search).
 
 ### Problem
 The log group you create via Terraform for your Lambda function must be named `/aws/lambda/{lambda-function-name}`. 
