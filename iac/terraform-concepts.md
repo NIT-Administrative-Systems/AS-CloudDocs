@@ -54,7 +54,7 @@ resource "aws_sns_topic" "opsgenie_alert_topic" {
 # using the Amazon Resource Name (ARN) that the previous resource
 # output.
 resource "aws_sns_topic_subscription" "opsgenie_integration" {
-  topic_arn              = "${aws_sns_topic.opsgenie_alert_topic.arn}"
+  topic_arn              = aws_sns_topic.opsgenie_alert_topic.arn"
   protocol               = "https"
   endpoint               = "https://api.opsgenie.com/alert/SomeTeam?apiKey=MyVeryCoolSecret"
   endpoint_auto_confirms = true

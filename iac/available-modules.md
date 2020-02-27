@@ -14,12 +14,12 @@ To use one of these modules, you can put a reference to Github in as the local m
 ```hcl
 module "alb" {
     // The double slash IS significant <https://www.terraform.io/docs/modules/sources.html#modules-in-package-sub-directories>
-    source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//alb"
+    source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//alb?ref=tf-0.12"
 
     region = "us-east-2"
-    account_label = "${var.account_label}"
-    vpc_id = "${var.vpc_id}"
-    subnets = ["${var.alb_subnets}"]
+    account_label = var.account_label
+    vpc_id = var.vpc_id
+    subnets = var.alb_subnets
 }
 ```
 

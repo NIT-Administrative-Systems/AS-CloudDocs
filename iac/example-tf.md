@@ -26,9 +26,9 @@ Generating the certificate with the module that the AS Cloud Services team has a
 # cert (with one hostname).
 module "certificate" {
     // The double slash IS significant <https://www.terraform.io/docs/modules/sources.html#modules-in-package-sub-directories>
-    source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//entapp_certificate"
+    source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//entapp_certificate?ref=tf-0.12"
 
-    hostnames = ["${var.hostnames}"]
+    hostnames = var.hostnames
 }
 ```
 
@@ -45,9 +45,9 @@ data "terraform_remote_state" "account_wide_alb" {
   backend = "s3"
 
   config = {
-    bucket = "${var.alb_state_bucket}"
-    key    = "${var.alb_state_file}"
-    region = "${var.alb_state_region}"
+    bucket = var.alb_state_bucket
+    key    = var.alb_state_file
+    region = var.alb_state_region
   }
 }
 
@@ -58,11 +58,11 @@ data "terraform_remote_state" "account_wide_alb" {
 # This also uses the certificate_arn attribute of the cert module we invoked in the
 # previous example.
 resource "aws_lb_listener" "lb_listener" {
-    load_balancer_arn = "${data.terraform_remote_state.account_wide_alb.lb_arn}"
+    load_balancer_arn = data.terraform_remote_state.account_wide_alb.outputs.lb_arn
     port              = "443"
     protocol          = "HTTPS"
     ssl_policy        = "ELBSecurityPolicy-2016-08"
-    certificate_arn   = "${module.certificate.certificate_arn}"
+    certificate_arn   = module.certificate.certificate_arn
 
     default_action {
         type = "fixed-response"
@@ -78,7 +78,7 @@ resource "aws_lb_listener" "lb_listener" {
 #
 # You will need to access this in the per-environment module.
 output "alb_listener_arn" {
-    value = "${aws_lb_listener.lb_listener.arn}"
+    value = aws_lb_listener.lb_listener.arn
 }
 ```
 
