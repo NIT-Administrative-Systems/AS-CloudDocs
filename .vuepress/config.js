@@ -34,6 +34,7 @@ module.exports = {
                     'vpc-ip-addr',
                     'alb',
                     'certificates',
+                    'api-gateway',
                     'secrets',
                     'vapor',
                 ].map(file => 'infrastructure/' + file),
@@ -43,12 +44,13 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'terraform-concepts',
-                    'tf-upgrading',
                     'as-tf-modules',
                     'example-tf',
                     'available-modules',
                     'state-buckets',
-                    'tf-import'
+                    'tf-import',
+                    'tf-upgrading',
+                    'faq',
                 ].map(file => 'iac/' + file),
             },
             {
