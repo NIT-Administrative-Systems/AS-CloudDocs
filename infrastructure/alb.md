@@ -46,25 +46,25 @@ data "terraform_remote_state" "account_resources" {
   backend = "s3"
 
   config = {
-    bucket = "${var.alb_state_bucket}"
-    key    = "${var.alb_state_file}"
-    region = "${var.alb_state_region}"
+    bucket = var.alb_state_bucket
+    key    = var.alb_state_file
+    region = var.alb_state_region
   }
 }
 
 module "certificate" {
     // The double slash IS significant <https://www.terraform.io/docs/modules/sources.html#modules-in-package-sub-directories>
-    source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//entapp_certificate"
+    source = "github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//entapp_certificate?ref=tf-0.12"
 
     hostnames = ["my-app-dev.entapp.northwestern.edu", "my-app-qa.entapp.northwestern.edu"]
 }
 
 resource "aws_lb_listener" "lb_listener" {
-    load_balancer_arn = "${data.terraform_remote_state.account_resources.lb_arn}"
+    load_balancer_arn = data.terraform_remote_state.account_resources.outputs.lb_arn
     port              = "443"
     protocol          = "HTTPS"
     ssl_policy        = "ELBSecurityPolicy-2016-08"
-    certificate_arn   = "${module.certificate.certificate_arn}"
+    certificate_arn   = module.certificate.certificate_arn
 
     default_action {
         type = "fixed-response"
@@ -77,7 +77,7 @@ resource "aws_lb_listener" "lb_listener" {
 }
 
 output "alb_listener_arn" {
-    value = "${aws_lb_listener.lb_listener.arn}"
+    value = aws_lb_listener.lb_listener.arn
 }
 ```
 
@@ -90,9 +90,9 @@ data "terraform_remote_state" "account_resources" {
   backend = "s3"
 
   config = {
-    bucket = "${var.account_resources_state_bucket}"
-    key    = "${var.account_resources_state_file}"
-    region = "${var.account_resources_state_region}"
+    bucket = var.account_resources_state_bucket
+    key    = var.account_resources_state_file
+    region = var.account_resources_state_region
   }
 }
 
@@ -101,37 +101,37 @@ data "terraform_remote_state" "alb_listener" {
   backend = "s3"
 
   config = {
-    bucket = "${var.shared_state_bucket}"
-    key    = "${var.shared_state_file}"
-    region = "${var.shared_state_region}"
+    bucket = var.shared_state_bucket
+    key    = var.shared_state_file
+    region = var.shared_state_region
   }
 }
 
 # So TF knows when to re-generate the target group name
 resource "random_id" "target_group_id" {
   keepers {
-    name = "${local.lb_target_group_name}"
-    vpc_id ="${data.terraform_remote_state.account_resources.vpc_id}"
-    target_type = "${local.lb_target_group_target_type}"
+    name = local.lb_target_group_name
+    vpc_id = data.terraform_remote_state.account_resources.outputs.vpc_id
+    target_type = local.lb_target_group_target_type
   }
   byte_length = 4
 }
 
 resource "aws_lb_target_group" "lb_target_group" {
-  name     = "${local.lb_target_group_name}-${random_id.target_group_id.hex}"
+  name     = local.lb_target_group_name}-${random_id.target_group_id.hex
   port     = "8080"
   protocol = "HTTP"
-  deregistration_delay = "${var.deregistration_delay}"
-  target_type = "${local.lb_target_group_target_type}"
-  vpc_id = "${data.terraform_remote_state.account_resources.vpc_id}"
+  deregistration_delay = var.deregistration_delay
+  target_type = local.lb_target_group_target_type
+  vpc_id = data.terraform_remote_state.account_resources.outputs.vpc_id
 
   health_check {
-    healthy_threshold = "${var.hc_healthy_threshold}"
-    unhealthy_threshold = "${var.hc_unhealthy_threshold}"
-    timeout = "${var.hc_timeout}"
-    interval = "${var.hc_interval}"
-    path = "${var.hc_path}"
-    matcher = "${var.hc_matcher}"
+    healthy_threshold = var.hc_healthy_threshold
+    unhealthy_threshold = var.hc_unhealthy_threshold
+    timeout = var.hc_timeout
+    interval = var.hc_interval
+    path = var.hc_path
+    matcher = var.hc_matcher
   }
 
   lifecycle {
@@ -140,29 +140,29 @@ resource "aws_lb_target_group" "lb_target_group" {
 }
 
 resource "aws_lb_listener_rule" "lb_group_rule" {
-  listener_arn = "${data.terraform_remote_state.alb_listener.alb_listener_arn}"
+  listener_arn = data.terraform_remote_state.alb_listener.outputs.alb_listener_arn
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.lb_target_group.arn}"
+    target_group_arn = aws_lb_target_group.lb_target_group.arn
   }
   
   condition {
     field  = "host-header"
-    values = ["${var.hostnames}"]
+    values = var.hostnames
    }
 }
 
 # In this example, we're using a Fargate ECS cluster as a target.
 # Other services support registering with the target group too.
 resource "aws_ecs_service" "ecs_task_serv" {
-    name = "${local.ecs_task_name}"
+    name = local.ecs_task_name
     
     # . . .
 
     load_balancer {
-        target_group_arn = "${aws_lb_target_group.lb_target_group.arn}"
-        container_name   = "${local.container_name}"
+        target_group_arn = aws_lb_target_group.lb_target_group.arn
+        container_name   = local.container_name
         container_port   = 80
     }
 }

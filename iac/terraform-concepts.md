@@ -7,12 +7,10 @@ All cloud resources in the prod & nonprod environments must be created as IaC, a
 
 For the most part, AS developers will only need to be concerned with the [AWS provider](https://www.terraform.io/docs/providers/aws/index.html). But if the need arises, you can use terraform to build infrastructure for one app across several cloud vendors.
 
-:::danger Terraform v0.10
-At this time, Terraform v0.10 is the default installed on all Jenkins servers.
+:::warning Terraform Version
+Prior to January 2020, we used Terraform v0.10. We are in the process of migrating to TF 0.12. 
 
-Be aware of your target Terraform version when reading & writing code. v0.12 made significant changes to the syntax.
-
-When reviewing Terraform documentation, verify the docs are either for v0.11 and before (pre-2020 AS terraform modules) or for v0.12 (written in 2020 and beyond). 
+All new IaC development should be done using TF 0.12. We recommend installing [`tfenv`](https://github.com/tfutils/tfenv) to manage your TF versions.
 
 You should upgrade your older modules to v0.12 -- see the AS [upgrade guide](./tf-upgrading.md) for guidance.
 :::
@@ -56,7 +54,7 @@ resource "aws_sns_topic" "opsgenie_alert_topic" {
 # using the Amazon Resource Name (ARN) that the previous resource
 # output.
 resource "aws_sns_topic_subscription" "opsgenie_integration" {
-  topic_arn              = "${aws_sns_topic.opsgenie_alert_topic.arn}"
+  topic_arn              = aws_sns_topic.opsgenie_alert_topic.arn"
   protocol               = "https"
   endpoint               = "https://api.opsgenie.com/alert/SomeTeam?apiKey=MyVeryCoolSecret"
   endpoint_auto_confirms = true

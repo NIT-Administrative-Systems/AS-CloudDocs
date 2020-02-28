@@ -27,19 +27,19 @@ data "terraform_remote_state" "account_resources" {
   backend = "s3"
 
   config = {
-    bucket = "${var.account_resources_state_bucket}"
-    key    = "${var.account_resources_state_file}"
-    region = "${var.account_resources_state_region}"
+    bucket = var.account_resources_state_bucket
+    key    = var.account_resources_state_file
+    region = var.account_resources_state_region
   }
 }
 
 resource "aws_ecs_service" "ecs_task_serv" {
-    name = "${local.ecs_task_name}"
+    name = local.ecs_task_name
     
     // . . .
 
     network_configuration {
-        subnets =  ["${data.terraform_remote_state.account_resources.docconv_subnets}"]
+        subnets = data.terraform_remote_state.account_resources.docconv_subnets
         // . . .
     }
 }
