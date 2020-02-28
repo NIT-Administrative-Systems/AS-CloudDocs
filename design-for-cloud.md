@@ -10,7 +10,7 @@ Administrative Systems is not an infrastructure-focused group. We are responsibl
 
 When you are applying this site's recommendation to your application, your goal should be to minimize the amount of infrastructure your application utilizes. For example, if ECS Fargate meets your needs, you can avoid worrying about EC2 resources entirely. If you need a database, consider RDS Aurora Serverless or DynamoDB over traditional RDS.
 
-If Amazon has managed service, that should be used over rolling-your-own. Instead of running a container with Redis, make use of Elasticache Redis. Managed services cost a bit more, but you will save significant engineering time on setup and on-going operations by outsourcing those responsibilities to Amazon.
+If Amazon has a managed service, that should be used over rolling-your-own. Instead of running a container with Redis, make use of Elasticache Redis. Managed services cost a bit more, but you will save significant engineering time on setup and on-going operations by outsourcing those responsibilities to Amazon.
 
 This is why we do not recommend deploying apps directly on EC2s using our more traditional on-prem approach: staff time would be dedicated to SysAdmin tasks, like patching, configuring services, and troubleshooting at the host level. AS engineering resources must remain focused on development & integration.
 
