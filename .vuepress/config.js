@@ -68,6 +68,7 @@ module.exports = {
                 children: [
                     'settings-permissions',
                     'repo-layout',
+                    'workflow',
                     'policies',
                 ].map(file => 'github/' + file),
             },
