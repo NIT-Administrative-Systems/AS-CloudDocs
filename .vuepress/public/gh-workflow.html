@@ -17,11 +17,13 @@ createBranch=>start: Create Feature / Bugfix Branch
 doDev=>operation: Doing development ...
 prToDev=>operation: Submit Pull Request
 to Dev Branch
-prReview=>condition: PR Review
+prReview=>condition: Leads Review PR
 OK to Merge?
-mergeToDev=>operation: Merge to `dev`
-mergeToQA=>operation: Merge to `qa`
-mergeToProduction=>end: merge to `prod`
+mergeToDev=>operation: Merge to dev
+prToQA=>condition: PR Review
+OK to 
+mergeToQA=>operation: Repeat for QA
+mergeToProduction=>end: Repeat for Production
 
 createBranch->doDev->prToDev->prReview
 prReview(yes)->mergeToDev
