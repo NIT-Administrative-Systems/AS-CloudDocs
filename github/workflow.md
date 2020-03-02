@@ -11,6 +11,8 @@ In addition to the dev branch, our projects will typically have a QA and product
 <!-- See docs/.vuepress/public/gh-workflow.html to make changes. -->
 <iframe src="/gh-workflow.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe> 
 
+If adjustments to this process are needed for a specific repository, they should be documented in its README file. A preference to merge the whole dev branch to QA (and then QA to prod) should be documented in the REAMDE file as well.
+
 ## Creating a Topic Branch
 Developers must make a decision when creating their topic branch: where to branch from. **The safest place to branch from is your production branch**. 
 
