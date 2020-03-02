@@ -25,4 +25,9 @@ Below is an example topic branch, `edit-screen` that started from the dev branch
 <!-- See docs/.vuepress/public to make changes. -->
 <iframe src="/git-branching-from-dev-problem.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
 
-## Best Practices
+The [GitHub Desktop client](https://desktop.github.com/) will help you be more cognizant of this by prompting you when you create a topic branch.
+
+## Pull Request Reviews
+When branch protection is enabled [per the AS recommendations](./settings-permissions.md#branch-protection), developers may not push directly to the dev/qa/production environment branches. Instead, they open pull requests from their topic branch back to an environment.
+
+The `CODEOWNERS` file will automatically assign the leads team as reviwers for the pull request, and it cannot be merged until at least one lead has approved. The developers & leads are free to request reviews from other subject-matter experts, but a lead must approve before the PR can be merged.
