@@ -8,7 +8,7 @@ The process should be familiar if you have used git before: developers will crea
 
 In addition to the dev branch, our projects will typically have a QA and production branch. To promote code to these environments, you can repeat the PR process for the QA/production branches. For bigger projects, you may find managing dozens of topic branches difficult -- as an alternative, you can PR the dev branch to QA, and then the QA branch to production.
 
-<!-- See docs/.vuepress/public/gh-workflow.html to make changes. -->
+<!-- See .vuepress/public/gh-workflow.html to make changes. -->
 <iframe src="/gh-workflow.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe> 
 
 If adjustments to this process are needed for a specific repository, they should be documented in its README file. A preference to merge the whole dev branch to QA (and then QA to prod) should be documented in the REAMDE file as well.
@@ -22,7 +22,7 @@ If you create your topic branch from the dev environment's branch, you implicitl
 
 Below is an example topic branch, `edit-screen` that started from the dev branch. If you mouse over the commits in dev, you will see there is an experimental widget. This experimental code has been included in the topic branch.
 
-<!-- See docs/.vuepress/public to make changes. -->
+<!-- See .vuepress/public to make changes. -->
 <iframe src="/git-branching-from-dev-problem.html" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
 
 The [GitHub Desktop client](https://desktop.github.com/) will help you be more cognizant of this by prompting you when you create a topic branch.
