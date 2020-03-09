@@ -12,6 +12,13 @@ Subnet assignments are done in your account's shared resources Github repository
 
 In cases where you are certain that you do not need to access resources in the campus datacenter, you do not need a subnet allocation -- Amazon can provide the IPs from their pool of public addresses.
 
+### Considerations
+Each AWS account has a pair of "general use" subnets, generally labelled Pvt-AZ1/Pvt-AZ2 and Pub-AZ1/Pub-AZ2. You can make use of these if you are not concerned about firewalls or IP whitelisting to allow your application access to on-campus resources.
+
+If you wanted a service on AWS to access an Oracle DB in the datacenter, you would likely want a dedicated subnet for your application. Then, this subnet could be permitted access to the Oracle server without granting any other apps access.
+
+We do not give you a single IP address in a subnet. All firewall rules should be done for the assigned subnets (usually two; one per availability zone). Lambdas may use any IP from the subnet at any point, and EC2 or ECS machines will change addresses as you deploy new versions of your application (as you usually create a new instance before tearing down the old one).
+
 ### Assignment Process
 The EACD-CloudOps group will evaluate your request and determine if you need a dedicated subnet for your application, or if you can use an existing shared subnet. Factors such as application isolation and concurrent compute resource are considered.
 
