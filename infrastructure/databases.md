@@ -3,7 +3,7 @@ AWS has [a number of options for databases](https://aws.amazon.com/products/data
 
 - Being mindful of the limitations Amazon imposes, *especially* for their serverless products
 - Ensuring that you have an appropriate backup strategy in place
-
+- Cost 
 ## DynamoDB
 [DynamoDB](https://aws.amazon.com/dynamodb/) is a serverless NoSQL key-value & document store. When used correctly, it can automatically scale to handle extreme amounts of both traffic and data. There is very little set-up required, and AWS will manage backups & restorations for you.
 
