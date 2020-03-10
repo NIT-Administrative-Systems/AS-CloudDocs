@@ -37,6 +37,7 @@ module.exports = {
                     'api-gateway',
                     'lambda',
                     'iam',
+                    'databases',
                     'secrets',
                     'vapor',
                 ].map(file => 'infrastructure/' + file),
