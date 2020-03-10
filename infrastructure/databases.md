@@ -9,7 +9,7 @@ AWS has [a number of options for databases](https://aws.amazon.com/products/data
 
 You should not think of it as a cheap drop-in replacement for an RDBMS; it is fundementally different. DynamoDB is not a good fit if you need to do a rich faceted search or query relational data.
 
-Dynamo tables have two billing modes: you can pay-per-request, or you can reserve read & write capacity units and receive a consistent monthly bill. For all of our applications so far, the per-per-request option has been adequate.
+Dynamo tables have two billing modes: you can pay-per-request, or you can reserve read & write capacity units and receive a consistent monthly bill. For all of our applications so far, the pay-per-request option has been adequate.
 
 There are a number of restrictions that need to be factored in to your table design when building your application: Dynamo lets you have one primary key (composed of a partition key & sort key), and a limited number of [secondary indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html). You need to get these indexes right when you are creating the table initially; modifying these once you have data is a complicated process that significant engineering time will be spent on.
 
