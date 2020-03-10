@@ -36,6 +36,7 @@ module.exports = {
                     'certificates',
                     'api-gateway',
                     'lambda',
+                    'ses',
                     'iam',
                     'secrets',
                     'vapor',
