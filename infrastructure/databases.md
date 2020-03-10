@@ -37,7 +37,7 @@ Aurora is a proprietary Amazon-developed RDBMS backend, which then has Postgres/
 ### Traditional RDS
 The traditional (as opposed to serverless) RDS product allows you to choose your EC2 size. Amazon has a DB-optimized series of compute nodes, and you build your cluster from these plus storage. You have a high degree of flexibility and customization for your DB config. For example, AWS supports [most popular Postgres extensions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.FeatureSupport.Extensions.11x) out of the box, and these can be added to your database.
 
-With traditional RDS, developers will still be involved in DBA work: maintenance windows must be scheduled for reboots, config changes, certificate updates, and migration from unhealthy compute. These tasks are infrequent and easy to complete if the developer understands the problem, they do take time away from more productive work.
+With traditional RDS, developers will still be involved in DBA work: maintenance windows must be scheduled for reboots, config changes, certificate updates, and migration from unhealthy compute. These tasks are infrequent and easy to complete if the developer understands the problem, but they do take time away from [more productive work](../design-for-cloud.md#on-infrastructure).
 
 ### Aurora Serverless
 Aurora Serverless uses Amazon's compute to power your Aurora RDBMS. It still behaves exactly like a normal Postgres/MySQL database.
