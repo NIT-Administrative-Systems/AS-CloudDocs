@@ -40,16 +40,16 @@ You should always grant the minimum access possible. In the case of SES, this pr
 ## Account Status
 The SES service needs to be set up for the `northwestern.edu` domain and removed from the [SES email sandbox](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html) before you can send mail. This is work that only needs to be done once per account.
 
-Here is the current disposition:
+Here is the current disposition. Accounts that are still in the email sandbox may only send mail to a small number of email addressed that have opted in.
 
-| Account        | Domain Setup | Can send external mail | 
-|----------------|--------------|------------------------| 
-| DMA Sandbox    | No           | Yes                    | 
-| DMA Nonprod    | No           | Yes                    | 
-| DMA Production | No           | Yes                    | 
-| ADO Sandbox    | Not verified | Yes                    | 
-| ADO Nonprod    | Yes          | No                     | 
-| ADO Production | Yes          | No                     | 
+| Account        | Domain Setup | In Email Sandbox | 
+|----------------|--------------|------------------| 
+| DMA Sandbox    | No           | Yes              | 
+| DMA Nonprod    | No           | Yes              | 
+| DMA Production | No           | Yes              | 
+| ADO Sandbox    | Not verified | Yes              | 
+| ADO Nonprod    | Yes          | No               | 
+| ADO Production | Yes          | No               | 
 
 If you need an account set up for SES, contact the EACD-CloudOps team. The setup may take a few days; requests to leave the SES email sandbox are manually reviewed & approved by AWS customer support.
 
