@@ -1,5 +1,5 @@
 # Databases
-AWS has [a number of options for databases](https://aws.amazon.com/products/databases/), beyond even what this article will address. When choosing from the options below, or other AWS services not covered, there are two key things to consider:
+AWS has [a number of options for databases](https://aws.amazon.com/products/databases/), beyond even what this article will address. When choosing from the options below, or other AWS services not covered, there are three key things to consider:
 
 - Being mindful of the limitations Amazon imposes, *especially* for their serverless products
 - Ensuring that you have an appropriate backup strategy in place
