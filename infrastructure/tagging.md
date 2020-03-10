@@ -1,6 +1,8 @@
 # Tagging Resources
 AWS allows developers to tag most resources with up to 50 custom key:value pairs. In Administrative Systems, we have two uses for tags: cost breakdown (from the AWS Cost Explorer), and use with IAM/snapshot/bucket ACL policies.
 
+Beyond our standard tags, developers are free to add additional tags in whatever way makes sense for that application. AWS has some [ideas on tagging strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/) for things like clusters & security.
+
 ## Standard Tags
 We only require two standard tags. All resources that support tagging should have these tags.
 
