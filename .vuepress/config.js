@@ -31,6 +31,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'aws-account-design',
+                    'tagging.md',
                     'vpc-ip-addr',
                     'alb',
                     'certificates',
