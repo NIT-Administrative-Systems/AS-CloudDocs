@@ -55,4 +55,26 @@ If you need an account set up for SES, contact the EACD-CloudOps team. The setup
 
 Our sandbox accounts will not be removed from the SES email sandbox. You can set up verified recipients to send mail to, if that is an important aspect of your proof-of-concept.
 
-If you want to send from a different domain, contact the EACD-CloudOps team.
+## Domain Setup
+You may wish to send emails from a domain other than `northwestern.edu`. For example, a project involving a microsite for a student group may have its own domain name. 
+
+If you want to send from a different domain, contact the EACD-CloudOps team to have it set up. You will need to provide a contact that can manage DNS for the domain to EACD-CloudOps.
+
+There are two parts to the domain setup: verification, and setting up SPF/DKIM records (to avoid emails being flagged as spam). 
+
+The SES domain should be terraformed in the account's shared resources module. The verification DNS record and DKIM DNS records will be available in the AWS console once created.
+
+Our preferred method for verification is one of SES' alternative approaches: create a TXT record for the domain prefixed with `amazonses`. This approach allows for multiple AWS accounts (prod & nonprod) to send mail for a single domain. For example, `northwestern.edu` is set up like this:
+
+```
+$ dig +short -t txt northwestern.edu | grep amazonses
+"amazonses:PD1svM8Ux6TaXc7Gzh7bEKYK8ki2nt1gzZx0bKpaJPg="
+"amazonses:0G1rTZw4h/ZJ8pnm67+KKxSL41IP0Ok7GZUZ7IF/kZc="
+"amazonses:eKCoAQOpP+sWBz54nKIZTfjnWJSS7Nrflp9ziIraP1M="
+"amazonses:7r2Zk09xSsTpfnWKtxmYJqXsJOGSGsquQGrckxhTLUI="
+"amazonses:8oZtwYE9ip7ShHqAmkO/bCOQbr1zqwQ9D3DcOdg6eMg="
+```
+
+The [DKIM](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) instructions in the console should be followed, as the way DKIM works supports our prod/nonprod AWS account setup out of the box. 
+
+To set up [SPF](https://en.wikipedia.org/wiki/Sender_Policy_Framework), adjust the domain's SPF record [according to Amazon's documentation](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-spf.html#send-email-authentication-spf-records) by adding an `include:amazonses.com` policy.
