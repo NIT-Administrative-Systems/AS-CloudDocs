@@ -62,7 +62,7 @@ If you want to send from a different domain, contact the EACD-CloudOps team to h
 
 There are two parts to the domain setup: verification, and setting up SPF/DKIM records (to avoid emails being flagged as spam). 
 
-The SES domain should be terraformed in the account's shared resources module. The verification DNS record and DKIM DNS records will be available in the AWS console once created.
+The SES domain should be terraformed in the account's shared resources module. The ARN for the new domain should be published as an output, so other developers can reference it in their IaC modules. The verification DNS record and DKIM DNS records will be available in the AWS console once created.
 
 Our preferred method for verification is one of SES' alternative approaches: create a TXT record for the domain prefixed with `amazonses`. This approach allows for multiple AWS accounts (prod & nonprod) to send mail for a single domain. For example, `northwestern.edu` is set up like this:
 
