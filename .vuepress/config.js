@@ -40,6 +40,7 @@ module.exports = {
                     'iam',
                     'databases',
                     'secrets',
+                    'cloudfront',
                     'vapor',
                 ].map(file => 'infrastructure/' + file),
             },
