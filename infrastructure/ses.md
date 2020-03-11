@@ -46,7 +46,7 @@ Here is the current disposition. Accounts that are still in the email sandbox ma
 |----------------|--------------|------------------| 
 | DMA Sandbox    | No           | Yes              | 
 | DMA Nonprod    | No           | Yes              | 
-| DMA Production | No           | Yes              | 
+| DMA Production | Yes          | No               | 
 | ADO Sandbox    | Not verified | Yes              | 
 | ADO Nonprod    | Yes          | No               | 
 | ADO Production | Yes          | No               | 
