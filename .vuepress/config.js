@@ -41,6 +41,7 @@ module.exports = {
                     'iam',
                     'databases',
                     'secrets',
+                    'alerts',
                     'cloudfront',
                     'vapor',
                 ].map(file => 'infrastructure/' + file),
