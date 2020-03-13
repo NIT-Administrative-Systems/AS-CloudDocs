@@ -83,7 +83,7 @@ Choose *Automatically Send this Device a Duo Push* to enable this functionality.
 Once installed, you can run the utility with the below arguments. Your username should be in the format `ads\netid`.
 
 ```sh
-aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:webservices --region us-east-2
+aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:webservices --region us-east-2 --no-sspi
 ```
 
 Once logged in, the utility will prompt you to choose the AWS account to use.
