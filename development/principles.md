@@ -22,6 +22,6 @@ Applications must not reach into other app' DBs to pull data out -- instead, the
 
 You should use messaging to alert other applications (or be alerted) to events. Since some applications may wait and read messages in batches, messages should include the minimum amount of data possible -- information in messages left sitting can become stale if users update it or cancel the action that triggered a message. The consumer should request more information by calling an API to guarantee they are receiving the most up-to-date data.
 
-Applications must never auto-acknowledge messages. Messages should only be acknowledges once the application has dealt with them. Otherwise, messages can be lost when an unexpected exception or crash occurs.
+Applications must never auto-acknowledge messages. Messages should only be acknowledged once the application has dealt with them. Otherwise, messages can be lost when an unexpected exception or crash occurs.
 
 Talking to other applications via messaging de-couples our applications from each other. In the past, when the HR database is taken down for maintenance, it would impact other application. With messaging, if the HR system is unavailable, the messages can sit in queue until HR is available again.
