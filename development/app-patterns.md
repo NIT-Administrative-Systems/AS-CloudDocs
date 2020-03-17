@@ -127,7 +127,7 @@ On the right is a Laravel Vapor app that serves as a UI. It interacts with the d
 
 ![Frontend w/ API backend](../assets/laravel-infra.png)
 
-All of the services attached ot the Laravel app are automatically wired up by Vapor.  You do not need to think about setup for any of these services; just use the relevant framework features.
+All of the services attached to the Laravel app are automatically wired up by Vapor.  You do not need to think about setup for any of these services; just use the relevant framework features.
 
 - Firing events or dispatching asynchronous jobs will write data to SQS and trigger additional Lambda executions
 - Static assets are automatically deployed to CloudFront & the CDN domain injected into your views
