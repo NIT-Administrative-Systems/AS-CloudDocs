@@ -131,7 +131,7 @@ All of the services attached to the Laravel app are automatically wired up by Va
 
 - Firing events or dispatching asynchronous jobs will write data to SQS and trigger additional Lambda executions
 - Static assets are automatically deployed to CloudFront & the CDN domain injected into your views
-- The cache (which includes Laravel sessions) used DynamoDB by default
+- The cache (which includes Laravel sessions) uses DynamoDB by default
 - The [scheduler](https://laravel.com/docs/7.x/scheduling) is set up with a CloudWatch scheduled event
 - An optional S3 bucket for application data & file uploads can be opted in to from the `vapor.yml` config file
 
