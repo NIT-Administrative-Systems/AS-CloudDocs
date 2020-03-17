@@ -114,7 +114,7 @@ We are using [Livewire](https://laravel-livewire.com/) to create interactive UIs
 
 Livewire is not an all-or-nothing tool. You can livewire every screen, or build your app the traditional way and choose to livewire only a few specific pieces.
 
-There is a Northwestern [Bootstrap 4](https://getbootstrap.com/) theme available. Bootstrap depends on jQuery, but you should avoid using it for custom code as much as possible: Livewire and/or Vue are more powerful tools.
+There is a Northwestern [Bootstrap 4](https://getbootstrap.com/) theme available. Bootstrap depends on jQuery, but you should avoid using jQuery for custom code as much as possible: Livewire and/or Vue are more powerful tools. In the future, we will be able to remove jQuery and reduce the amount of Javascript browsers will need to download, giving us better page load times.
 
 ### Infrastructure & MASA Apps
 We always want to expose an application's data via an API. This will allow other Northwestern developers to create [mashup-](https://en.wikipedia.org/wiki/Mashup_(web_application_hybrid)) or [MASA-](https://www.gartner.com/document/3980382) style applications, aggregating data from several sources to create something tailored to their audience. 
