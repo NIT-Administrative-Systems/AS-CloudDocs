@@ -70,6 +70,15 @@ module.exports = {
                 ].map(file => 'ci-cd/' + file),
             },
             {
+                title: 'Application Development',
+                collapsable: false,
+                children: [
+                    'principles',
+                    'app-patterns',
+                    'libraries',
+                ].map(file => 'development/' + file),
+            },            
+            {
                 title: 'GitHub',
                 collapsable: false,
                 children: [
