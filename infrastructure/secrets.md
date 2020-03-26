@@ -109,7 +109,7 @@ resource "aws_iam_role_policy" "lambda_secrets_policy" {
 ### In the Console
 By default, the KMS encryption key that you create will not be usable. You will grant your Lambda/ECS/etc `kms:Decrypt` access, but if you want to review your secrets in the console or use them from the CLI, there is an additional step -- granting the developer role you access AWS with access.
 
-To avoid exposing secrets to other teams in your department, this access it not automatically granted. The [example IAM policy above](#using-secrets) could specify your login group's ARN instead of an execution role ARN, in order to enable decryption in the AWS Console.
+To avoid exposing secrets to other teams in your department, this access it not automatically granted. The [example IAM policy above](#using-secrets) could specify your login group's name instead of an execution role name, in order to enable decryption in the AWS Console.
 
 ```hcl
 data "aws_iam_role" "developers" {
