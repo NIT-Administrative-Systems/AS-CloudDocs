@@ -48,12 +48,12 @@ The current developer roles are:
 | ADO Nonprod | as-ado-nonprod-Devs-PS   | 
 | ADO Prod    | as-ado-prod-Devs-EACD    | 
 | ADO Prod    | as-ado-prod-Devs-PS      | 
-| DMA Sandbox | as-dma-sbx-Devs-IA       | 
-| DMA Sandbox | as-dma-sbx-Devs-ER       | 
-| DMA Nonprod | as-dma-nonprod-Devs-IA   | 
-| DMA Nonprod | as-dma-nonprod-Devs-ER   | 
-| DMA Prod    | as-dma-prod-Devs-IA      | 
-| DMA Prod    | as-dma-prod-Devs-ER      | 
+| DMA Sandbox | as-dma-sbx-IA-Devs       | 
+| DMA Sandbox | as-dma-sbx-RA-Devs       | 
+| DMA Nonprod | as-dma-nonprod-IA-Devs   | 
+| DMA Nonprod | as-dma-nonprod-RA-Devs   | 
+| DMA Prod    | as-dma-prod-IA-Devs      | 
+| DMA Prod    | as-dma-prod-RA-Devs      | 
 
 You can add additional permissions to these roles:
 
