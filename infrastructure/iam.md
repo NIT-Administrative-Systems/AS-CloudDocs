@@ -28,3 +28,35 @@ When writing policies, the best practice is to follow the rule of least privileg
 You should never write a policy that grants access to `Resource = *`. We run multiple applications in our AWS accounts, and it is never appropriate for something like your Lambda's execution role to have access to every DyanmoDB table in the account.
 
 There are a few exception to that rule: [Lambdas need wildcard access to create network interfaces](./lambda.md#running-in-the-vpc), and an execution role for an AWS account admin would want access to all resources. Contact the EACD-CloudOps team if you think you may have a situation that requires wildcard access, and they will try to provide solution.
+
+## Developer Roles
+To support AWS Console & CLI access, developers are members of one or more AWS roles. These roles are created & managed by the CloudOps groups.
+
+By default, these developer groups have restricted access in the nonprod & prod AWS accounts. They have the AWS-managed `ReadOnlyAccess` policy assigned, plus `NorthwesternDeveloperAllowedActions` granting them the following:
+
+- Execute a step function (`states:StartExecution`)
+- Execute a Lambda (`lambda:InvokeFunction`)
+- Reboot EC2 instances (`ec2:RebootInstances`)
+
+The current developer roles are:
+
+| Account     | Role Name                | 
+|-------------|--------------------------| 
+| ADO Sandbox | as-ado-sbx-Devs-EACD     | 
+| ADO Sandbox | as-ado-sbx-Devs-PS       | 
+| ADO Nonprod | as-ado-nonprod-Devs-EACD | 
+| ADO Nonprod | as-ado-nonprod-Devs-PS   | 
+| ADO Prod    | as-ado-prod-Devs-EACD    | 
+| ADO Prod    | as-ado-prod-Devs-PS      | 
+| DMA Sandbox | as-dma-sbx-IA-Devs       | 
+| DMA Sandbox | as-dma-sbx-RA-Devs       | 
+| DMA Nonprod | as-dma-nonprod-IA-Devs   | 
+| DMA Nonprod | as-dma-nonprod-RA-Devs   | 
+| DMA Prod    | as-dma-prod-IA-Devs      | 
+| DMA Prod    | as-dma-prod-RA-Devs      | 
+
+You can add additional permissions to these roles:
+
+- `kms:Decrypt` for keys that your application owns
+
+Additional policies assigned to the developer role are regularly audited. Do not add write permissions outside the scope of the above list: they will be revoked without warning & the breach reported to the the information security team for follow-up.

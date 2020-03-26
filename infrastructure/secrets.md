@@ -78,6 +78,53 @@ You should do this in your infrastructure pipeline: the function depends on the 
 ## Using Secrets
 Here are some notes on common ways to use SSM secrets.
 
+In all cases, the service will need to be given access to the KMS key before it can decrypt parameters -- granting your application access to an encrypted SSM parameter without the key will result in errors when you attempt to access the secret!
+
+Here is an example policy, based on the parameter example above:
+
+```hcl
+data "aws_iam_policy_document" "lambda_secrets_policy" {
+  statement {
+    effect    = "Allow"
+    actions   = ["ssm:GetParameters", "ssm:GetParameter"]
+    resources = aws_ssm_parameter.secure_param.*.arn
+  }
+
+  statement {
+    effect    = "Allow"
+    actions   = ["kms:Decrypt"]
+    resources = [aws_kms_key.key.arn]
+  }
+}
+
+resource "aws_iam_role_policy" "lambda_secrets_policy" {
+  name   = "SomeApp-Env-Secrets"
+  policy = data.aws_iam_policy_document.lambda_secrets_policy.json
+
+  # Your Lambda/ECS/etc execution role name
+  role = ". . ."
+}
+```
+
+### In the Console
+By default, the KMS encryption key that you create will not be usable. You will grant your Lambda/ECS/etc `kms:Decrypt` access, but if you want to review your secrets in the console or use them from the CLI, there is an additional step -- granting the developer role you access AWS with access.
+
+To avoid exposing secrets to other teams in your department, this access it not automatically granted. The [example IAM policy above](#using-secrets) could specify your login group's name instead of an execution role name, in order to enable decryption in the AWS Console.
+
+```hcl
+data "aws_iam_role" "developers" {
+  name = "as-ado-sbx-Devs-EACD"
+}
+
+resource "aws_iam_role_policy" "lambda_secrets_policy" {
+  name   = "SomeApp-SomeEnv-DeveloperDecryptSecrets"
+  role   = aws_iam_role.developers.name
+  policy = data.aws_iam_policy_document.lambda_secrets_policy.json
+}
+```
+
+The IAM article [has a list of available roles](./iam.md#developer-roles).
+
 ### ECS
 In your ECS [task definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html), you can specify a `secrets` section with the ARNs for your parameters. They will automatically be decrypted and injected into your container as environment variables when it is started:
 
