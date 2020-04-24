@@ -109,7 +109,7 @@ data "terraform_remote_state" "alb_listener" {
 
 # So TF knows when to re-generate the target group name
 resource "random_id" "target_group_id" {
-  keepers {
+  keepers = {
     name = local.lb_target_group_name
     vpc_id = data.terraform_remote_state.account_resources.outputs.vpc_id
     target_type = local.lb_target_group_target_type
