@@ -87,3 +87,57 @@ aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:web
 ```
 
 Once logged in, the utility will prompt you to choose the AWS account to use.
+
+## More About Configuring Profiles in the AWS-ADFS Utility
+
+The aws-adfs utility facilitates logging you into AWS and it places your temporary credential information in your .aws/credentials files where many other applications (including terraform) know where to look and how to use it. In short, it logs into an AWS account on your behalf during the upload.
+
+A default profile is established based on the first AWS account you use without specifically designating a profile name. Note that you can always delete your default via the reset command and establish another one. (See below.)
+
+In addition to a default profile, you can create a profile for each AWS account that you use.
+
+There are three commands that you will need in order to work with profiles:
+
+**1. aws-adfs list**
+
+Use this to list the details of all your profiles, including the default.
+
+
+**2. --profile {YourProfileName}**
+
+This is added to the standard utility statement both to create a profile and to use that profile after it is created.
+Once you have entered the standard utility statement with a new profile name, you will see a numbered list of all AWS account to which you have access.
+Enter the number of the account that you want to associate with the profile name you entered. From that point forward, that profile name is mapped to the account you selected.
+
+*For Example*
+```sh
+aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:webservices --region us-east-2 **--profile YourProfileName**
+```
+
+**3. aws-adfs reset --profile YourProfileName**
+
+Use this to delete the named profile from the list.
+
+
+
+## Shortcut Configuration
+The utility code listed above can become tedious. To shorten the process, use follow the instructions below to install a function within your bash profile that clears the current profile and sets your newly entered profile.
+
+1. Open bash editor:   vi ~/.bash_profile
+2. Enter i to insert
+3. Paste in the following code:
+
+```sh
+function aws-adfs-login ()
+{                                                                                     
+	unset AWS_PROFILE
+	aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:webservices --profile $1 --no-sspi
+	export AWS_PROFILE=$1
+}
+```
+
+4. Enter [esc] to exit insert mode
+5. Enter [shift]zz to save and close
+6. If you are using linux, enter:   **source ~/.bash_profile**
+7. To use a profile, enter the function and profile name:  **aws-adfs-login [YourProfileName]**
+8. To see all your profiles, enter: **aws-adfs list**
