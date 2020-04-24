@@ -88,7 +88,7 @@ aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:web
 
 Once logged in, the utility will prompt you to choose the AWS account to use.
 
-## More About Configuring Profiles in the Terraform Utility
+## More About Configuring Profiles in the AWS-ADFS Utility
 
 The aws-adfs utility facilitates logging you into AWS and it places your temporary credential information in your .aws/credentials files where many other applications (including terraform) know where to look and how to use it. In short, it logs into an AWS account on your behalf during the upload.
 
