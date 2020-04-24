@@ -10,8 +10,8 @@ module.exports = {
 
     themeConfig: {
         repo: 'NIT-Administrative-Systems/AS-CloudDocs',
-        docsDir: 'docs',
-        docsBranch: 'development',
+        docsDir: '',
+        docsBranch: 'stable',
         editLinks: true,
         editLinkText: 'Edit Page',
         lastUpdated: true,
