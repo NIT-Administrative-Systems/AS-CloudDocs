@@ -138,7 +138,6 @@ function aws-adfs-login ()
 
 4. Enter [esc] to exit insert mode
 5. Enter [shift]zz to save and close
-6. If you are using linex, enter:   **source ~/.bash_profile**
-7. If you are using Ubuntu, enter:   **source ~/.profile**
-8. To use a profile, enter the function and profile name:  **aws-adfs-login [YourProfileName]**
-9. To see all your profiles, enter: **aws-adfs list**
+6. If you are using linux, enter:   **source ~/.bash_profile**
+7. To use a profile, enter the function and profile name:  **aws-adfs-login [YourProfileName]**
+8. To see all your profiles, enter: **aws-adfs list**
