@@ -90,9 +90,9 @@ Once logged in, the utility will prompt you to choose the AWS account to use.
 
 ## More About Configuring Profiles in the Terraform Utility
 
-The Terraform utility acts as a log-in middleware between your TF files and the AWS account into which they will upload when you enter "Terraform Apply". In short, it logs into an AWS account on your behalf during the upload.
+The aws-adfs utility facilitates logging you into AWS and it places your temporary credential information in your .aws/credentials files where many other applications (including terraform) know where to look and how to use it. In short, it logs into an AWS account on your behalf during the upload.
 
-A default profile is established based on the first AWS account you use. If you do not want that account to be your default, you can change it. (See below.)
+A default profile is established based on the first AWS account you use without specifically designating a profile name. Note that you can always delete your default via the reset command and establish another one. (See below.)
 
 In addition to a default profile, you can create a profile for each AWS account that you use.
 
