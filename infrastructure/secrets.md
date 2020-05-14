@@ -118,7 +118,7 @@ data "aws_iam_role" "developers" {
 
 resource "aws_iam_role_policy" "lambda_secrets_policy" {
   name   = "SomeApp-SomeEnv-DeveloperDecryptSecrets"
-  role   = aws_iam_role.developers.name
+  role   = data.aws_iam_role.developers.name
   policy = data.aws_iam_policy_document.lambda_secrets_policy.json
 }
 ```
