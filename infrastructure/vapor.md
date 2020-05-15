@@ -61,16 +61,14 @@ AN_API_URL=https://api.dev.northwestern.edu/example-api
 VAPOR_SECRETS=ECATS_API_SYSTEM_USER_KEY,ECATS_API_APIGEE_KEY
 ```
 
-The Jenkins pipeline below will utilize the `VAPOR_SECRETS` variable to sync secrets from the Jenkins credential store to Vapor.
+The Jenkins pipeline below will utilize the `VAPOR_SECRETS` variable to sync secrets from the Jenkins credential store to Vapor. Instructions on adding your secrets to the Jenkins credential store may be found [here, under the Jenkins Setup header](./secrets.md#jenkins-setup) -- but the other steps (Terraform setup, Jenkins) in that article are not applicable to Vapor deployments.
 
 ## Deploying from Jenkins
 Vapor deployments should be triggered from the Jenkins server.
 
-You will need both your non-prod & prod project IDs. We recommend putting the non-prod project ID into `vapor.yml` and substituting it only during prod deployments:
-
 This example assumes your Jenkins server has a `vapor-api-key` credential with the nonprod / prod Vapor team's API key. It also assumes that your branch names match the environments in `vapor.yml`.
 
-To make this example work for production, adjust the IDs on the highlighted lines. Vapor is not built with our nonprod / prod AWS account spit in mind, so every app is two projects split across our nonprod & prod teams, each project getting its own ID. The nonprod ID is part of the `vapor.yml` file, so when we deploy prod, Jenkins will modify that line and put in the appropriate production Vapor project ID.
+You will need both your non-prod & prod project IDs. We recommend putting the non-prod project ID into `vapor.yml` and substituting it only during prod deployments. To make this example work for production, adjust the IDs on the highlighted lines. Vapor is not built with our nonprod / prod AWS account spit in mind, so every app is two projects split across our nonprod & prod teams, each project getting its own ID. The nonprod ID is part of the `vapor.yml` file, so when we deploy prod, Jenkins will modify that line and put in the appropriate production Vapor project ID.
 
 ```groovy{69-70}
 #!groovy
