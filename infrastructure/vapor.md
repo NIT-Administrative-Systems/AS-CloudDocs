@@ -41,59 +41,130 @@ These limitations are combination of a serverless architecture & Vapor product d
     - Vapor apps must be `subdomain.northwestern.edu`
     - Using entapp (e.g. `subdomain.entapp.northwestern.edu`) will not work
 
+## Best Practices
+The environment variables & secrets for a Laravel app are managed by Vapor. A copy of the `.env` file for your Vapor environments should be kept in your app's git repository as `.env.{vapor-env}`. 
+
+According to our [secrets management strategy](./secrets.md), env variables like credentials & API keys should not be kept in this file; instead, define a `VAPOR_SECRETS` env var and set it to a comma-separated list of secret names:
+
+```ini
+# These are the env vars for a Vapor environment.
+# This file is managed in Git, so *DO NOT* put any secrets here.
+# Secrets must be managed through Jenkins' credential store.
+
+APP_DEBUG=false
+APP_KEY=base64:...
+MAIL_MAILER=log
+
+AN_API_URL=https://api.dev.northwestern.edu/example-api
+
+# The next line is for Jenkins so it knows which secrets to sync to Vapor.
+VAPOR_SECRETS=ECATS_API_SYSTEM_USER_KEY,ECATS_API_APIGEE_KEY
+```
+
+The Jenkins pipeline below will utilize the `VAPOR_SECRETS` variable to sync secrets from the Jenkins credential store to Vapor. Instructions on adding your secrets to the Jenkins credential store may be found [here, under the Jenkins Setup header](./secrets.md#jenkins-setup) -- but the other steps (Terraform setup, Jenkins) in that article are not applicable to Vapor deployments.
+
 ## Deploying from Jenkins
 Vapor deployments should be triggered from the Jenkins server.
 
-You will need both your non-prod & prod project IDs. We recommend putting the non-prod project ID into `vapor.yml` and substituting it only during prod deployments:
-
 This example assumes your Jenkins server has a `vapor-api-key` credential with the nonprod / prod Vapor team's API key. It also assumes that your branch names match the environments in `vapor.yml`.
 
-```groovy
+You will need both your non-prod & prod project IDs. We recommend putting the non-prod project ID into `vapor.yml` and substituting it only during prod deployments. To make this example work for production, adjust the IDs on the highlighted lines. Vapor is not built with our nonprod / prod AWS account spit in mind, so every app is two projects split across our nonprod & prod teams, each project getting its own ID. The nonprod ID is part of the `vapor.yml` file, so when we deploy prod, Jenkins will modify that line and put in the appropriate production Vapor project ID.
+
+```groovy{69-70}
+#!groovy
+library identifier: "AS-jenkins-shared@stable", retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'GitHub-awsCloudOpsCJT', remote: 'https://github.com/NIT-Administrative-Systems/AS-jenkins-shared.git'])
+
 pipeline {
-    agent {
-        docker {
-            image 'edbizarro/gitlab-ci-pipeline-php:7.4'
-            args '-u root:root'
-        }
+    agent any
+
+    environment {
+        TEAMS_WEBHOOK_URL = credentials('teams-build-webhook')
     }
+
+    triggers {
+        pollSCM('H/10 * * * *')
+    }
+
 
     options {
         disableConcurrentBuilds()
     }
 
     stages {
-        stage ('Test') {
+        stage ('Send Notifications') {
             steps {
-                sh 'composer install'
-                sh 'cp .env.example .env && php artisan key:generate'
-                sh './vendor/bin/phpunit'
+                office365ConnectorSend status: "Started", webhookUrl: "${env.TEAMS_WEBHOOK_URL}"
             }
         }
 
-        stage ('Deploy') {
-            when {
-                anyOf {
-                    branch 'develop'
-                    branch 'qa'
-                    branch 'production'
+        stage ('Test and Deploy')
+        {
+            agent {
+                docker {
+                    image 'edbizarro/gitlab-ci-pipeline-php:7.4'
+                    args '-u root:root'
                 }
             }
 
-            steps {
-                script {
-                    GIT_COMMIT=checkout(scm).GIT_COMMIT
+            stages {
+                stage ('Test Mix') {
+                    steps {
+                        sh 'yarn install'
+                        sh 'yarn run prod'
+                    }
                 }
 
-                sh 'composer global require --prefer-dist --no-ansi --no-interaction --no-progress laravel/vapor-cli'
+                stage ('Test App') {
+                    steps {
+                        sh 'composer install'
+                        sh 'cp .env.example .env && php artisan key:generate'
+                        sh './vendor/bin/phpunit --coverage-text --color=never'
+                        sh 'rm .env'
+                    }
+                }
 
-                // Hack to support using two Vapor teams -- the project ID differs between non-prod and prod
-                sh "[ \"${BRANCH_NAME}\" = 'production' ] && sed -i 's/id: 1234/id: 5678/' vapor.yml || true"
+                stage ('Deploy') {
+                    when {
+                        anyOf {
+                            branch 'develop'
+                            branch 'qa'
+                            branch 'production'
+                        }
+                    }
 
-                withCredentials([string(credentialsId: 'vapor-api-key', variable: 'VAPOR_API_TOKEN')]) {
-                    sh "PATH=\$PATH:\$COMPOSER_HOME/vendor/bin/ vapor deploy --no-ansi ${BRANCH_NAME} --commit='${GIT_COMMIT}'"
+                    steps {
+                        script {
+                            GIT_COMMIT=checkout(scm).GIT_COMMIT
+                        }
+
+                        sh 'composer global require --prefer-dist --no-ansi --no-interaction --no-progress laravel/vapor-cli'
+
+                        // Hack to support using two Vapor teams -- the project ID differs between non-prod and prod
+                        sh "[ \"${BRANCH_NAME}\" = 'production' ] && sed -i 's/id: 1234/id: 5678/' vapor.yml || true"
+
+                        withCredentials([string(credentialsId: 'vapor-api-key', variable: 'VAPOR_API_TOKEN')]) {
+                            publishSecretsToVapor("${BRANCH_NAME}");
+
+                            sh '''export PATH=\$PATH:\$COMPOSER_HOME/vendor/bin/ &&
+                            vapor env:push ${BRANCH_NAME} &&
+                            vapor deploy --no-ansi ${BRANCH_NAME} --commit='${GIT_COMMIT}'
+                            '''
+                        }
+                    }
                 }
             }
         }
     }
+
+    post {
+        success {
+            office365ConnectorSend status: "Success!", webhookUrl: "${env.TEAMS_WEBHOOK_URL}"
+        }
+
+        failure {
+            office365ConnectorSend status: "Failed", webhookUrl: "${env.TEAMS_WEBHOOK_URL}"
+        }
+    }
 }
+
 ```
