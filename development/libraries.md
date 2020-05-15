@@ -10,3 +10,4 @@ Please refer to each package's documentation for instructions on how to install,
 | [laravel-soa](https://nit-administrative-systems.github.io/SysDev-laravel-soa/)                        | Laravel (PHP)    | WebSSO, common API bindings | 
 | [EventHub SDK](https://github.com/NIT-Administrative-Systems/SysDev-EventHub-PHP-SDK)                  | PHP              | EventHub API binding        | 
 | [EventHub SDK](https://github.com/NIT-Administrative-Systems/ia-EventHub-Library)                      | Java             | EventHub API binding        | 
+| [northwestern-laravel-ui](https://nit-administrative-systems.github.io/northwestern-laravel-ui)        | Laravel (PHP)    | Bootstrap 4 theme & layouts |
