@@ -8,7 +8,7 @@ There are a some files that will be common to most repositories. We recommend:
 - Creating a `.github/` folder with
     - A [`CODEOWNERS` file](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners) with your leads group as the owner of all files
     - At least one pull [request template](https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository)
-- Creating a [`.dependabot/config.yml` file](https://dependabot.com/docs/config-file/)
+    - A [`dependabot.yml` file](https://help.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates)
 - Creating a `.jenkins/` folder to hold all `Jenkinsfile`s
 - Creating a `README.md` file at the project root that contains information about the tech stack & steps for running a development environment
 
@@ -33,20 +33,21 @@ A good pull request template will give developers guidance on what is expected f
 - [ ] Database migrations tested (up & down)
 ```
 
-The Dependabot configuration file will vary depending on what technologies you use in the project. You should refer to [their documentation](https://dependabot.com/docs/config-file/) when creating this file, but here is a template for a PHP app that has both a `composer.json` (PHP) and `package.json` (NodeJS) file at the root of the repository:
+The Dependabot configuration file will vary depending on what technologies you use in the project. You should refer to [their documentation](https://help.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates) when creating this file, but here is a template for a PHP app that has both a `composer.json` (PHP) and `package.json` (NodeJS) file at the root of the repository:
 
 ```yaml
-version: 1
-update_configs:
-  - package_manager: "javascript"
-    directory: "/"
-    update_schedule: "live"
-    default_reviewers:
-      - "@NIT-Administrative-Systems/eacd-leads"
-
-  - package_manager: "php:composer"
-    directory: "/"
-    update_schedule: "live"
-    default_reviewers:
-      - "@NIT-Administrative-Systems/eacd-leads"
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '11:00'
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '11:00'
+  open-pull-requests-limit: 10
 ```
