@@ -3,15 +3,6 @@ These are case studies for successful application architectures on the cloud. If
 
 We are making an effort to standardize around a small number stacks & patterns so it is easier for developers to work cross-team. These patterns adhere to our [design principles](./design-principles.md).
 
-## Express App
-[Express](https://expressjs.com/) is the most popular web framework for Node. It can be [adapted to run on Lambda](https://github.com/awslabs/aws-serverless-express) with a middleware, making this easy to run locally for development or on AWS for production.
-
-:::warning Stub
-We have several NodeJS apps in production and are evlauating them to produce the best pattern. 
-
-More information will be available soon.
-:::
-
 ## Laravel App
 [Laravel](https://laravel.com/) is an excellent choice for cloud applications. It is a modern framework with [advanced](https://laravel.com/docs/7.x/events) [features](https://laravel.com/docs/7.x/broadcasting), and it's easy to deploy on AWS with [Vapor](../infrastructure/vapor.md). 
 
@@ -136,3 +127,8 @@ All of the services attached to the Laravel app are automatically wired up by Va
 - An optional S3 bucket for application data & file uploads can be opted in to from the `vapor.yml` config file
 
 In the above example, there is no database for the Laravel UI and only one backing API. This is only done to create a simple diagram. If you want to store your own data or annotate data from another service, add a DB to your Laravel app, or grab data from another API. If you create data mash-ups, you should consider exposing these with your own API built on top of the Laravel app and register them in the API Service Registry for other developers to utilize.
+
+## Express App
+[Express](https://expressjs.com/) is the most popular web framework for Node. It can be [adapted to run on Lambda](https://github.com/dougmoscrop/serverless-http), making this easy to run locally for development or on AWS for production.
+
+A template with an included IaC module for deploying to AWS is available [in the Northwestern github organization](https://github.com/NIT-Administrative-Systems/AS-serverless-nodejs-api). You can create a new repository using this template from GitHub's new repository page.

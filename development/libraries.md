@@ -11,3 +11,4 @@ Please refer to each package's documentation for instructions on how to install,
 | [EventHub SDK](https://github.com/NIT-Administrative-Systems/SysDev-EventHub-PHP-SDK)                  | PHP              | EventHub API binding        | 
 | [EventHub SDK](https://github.com/NIT-Administrative-Systems/ia-EventHub-Library)                      | Java             | EventHub API binding        | 
 | [northwestern-laravel-ui](https://nit-administrative-systems.github.io/northwestern-laravel-ui)        | Laravel (PHP)    | Bootstrap 4 theme & layouts |
+| [AS-serverless-api-IaC](https://github.com/NIT-Administrative-Systems/AS-serverless-api-IaC)           | Terraform        | Create infra for NodeJS API |
