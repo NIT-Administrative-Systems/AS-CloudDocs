@@ -28,7 +28,7 @@ Amazon ECS is a container management service (manages the lifecycle of your cont
 ### Load Balancing
 A dedicated load balancer enables you to attach a domain to your Fargate Service (you could attach a public IP to the service but it would change every time you redeployed the service) and distributes traffic across the tasks in your containers. 
 
-The load balancer also performs health checks on the tasks in your service, meaning it sends periodic requests and verifies that the expected response is returned. and communicates with the ECS service scheduler to restart unhealthy tasks to maintain the desired number of healthy tasks in your service. When a task is unhealthy, ECS removes the task from the load balancer, waits for a deregistration delay (time for the load balancer to drain active connections), and starts a new task which it registers with the load balancer. 
+The load balancer also performs health checks on the tasks in your service; it sends periodic requests and verifies that the expected response is returned. It communicates with the ECS service scheduler to restart unhealthy tasks in order to maintain the desired number of healthy tasks in your service. When a task is unhealthy, ECS removes the task from the load balancer, waits for a deregistration delay (time for the load balancer to drain active connections), and starts a new task which it registers with the load balancer. 
 
 ### Auto Scaling
 Reduce costs and meet demand by scaling the number of tasks running your application up/down in response to demand.
