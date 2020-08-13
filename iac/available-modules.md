@@ -6,6 +6,7 @@ The EACD-CloudOps teams maintains [several modules](https://github.com/NIT-Admin
 - [OpsGenie Integration for CloudWatch Alarms](https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules/tree/stable/opsgenie)
 - [Private Subnet Assignment](https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules/blob/stable/private_subnet)
 - [Fargate Task](https://github.com/NIT-Administrative-Systems/AS-fargate-modules/tree/master)
+- [Fargate Service](https://github.com/NIT-Administrative-Systems/AS-fargate-modules/tree/master)
 
 All teams are welcome to use these modules. Support can be provided by the EACD-CloudOps group.
 
