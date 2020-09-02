@@ -12,6 +12,17 @@ For stopping and starting ECS Fargate Services, see the [ECS Fargate documentati
 
 To request support for other AWS services or regions, please submit a request to EACD for evaluation.
 
+## Supported AWS Accounts
+The Service Scheduler is only available in non-production accounts:
+| AWS Account | Service Scheduler |
+| ------- | ------------- |
+| ADO Sandbox | Yes |
+| ADO Nonprod | Yes |
+| ADO Prod | No |
+| DMA Sandbox | Yes |
+| DMA Nonprod | Yes |
+| DMA Prod | No |
+
 ## How To Schedule Your Resources
 ### Method 1: Preset Schedule Tags (recommended)
 Add a tag to your Terraform resource:
