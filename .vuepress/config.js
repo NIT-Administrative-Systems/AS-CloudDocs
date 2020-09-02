@@ -37,7 +37,7 @@ module.exports = {
                     'certificates',
                     'api-gateway',
                     'lambda',
-                    'fargate',
+                    'ecs-fargate',
                     'ses',
                     'iam',
                     'databases',
@@ -45,6 +45,7 @@ module.exports = {
                     'alerts',
                     'cloudfront',
                     'vapor',
+                    'aws-service-scheduler.md',
                 ].map(file => 'infrastructure/' + file),
             },
             {
