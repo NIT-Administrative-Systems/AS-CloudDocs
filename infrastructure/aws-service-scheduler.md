@@ -49,6 +49,7 @@ resource "aws_instance" "example" {
 | Business Hours | M-F 8am-5pm | business_hours |
 | Extended Business Hours | M-F 6am-7pm | extended_business_hours |
 | Weekdays Only | Monday 5am - Friday 10pm | weekdays_only |
+| Business Hours - Stop Only (manual start by developer) | Stops M-F 5pm | business_hours_stop |
 
 ### Method 2: Customized schedule and resources
 1. In your IaC, leverage Terraform remote state to get the stop_lambda_arn and start_lambda_arn output for our Lambda functions. Create CloudWatch rules invoking our STOP and START Lambda functions on your own schedule.
