@@ -58,6 +58,7 @@ module.exports = {
                     'available-modules',
                     'state-buckets',
                     'tf-import',
+                    'tf-move',
                     'tf-upgrading',
                     'faq',
                 ].map(file => 'iac/' + file),
