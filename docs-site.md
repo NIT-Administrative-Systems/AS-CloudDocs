@@ -3,21 +3,21 @@ Want to build a docs site like this one? This site is generated from markdown fi
 
 
 ## Overview
-<b>Vuepress sites</b> are optimized for technical documentation. Content is written as markdown files. Vuepress compiles the markdown files into html. Behind the scenes Vue takes over and turns the HTML into components and presents it all as a single-page application. If you'd like a more detailed understanding of how it works, see the [VuePress documentation](https://v1.vuepress.vuejs.org/guide/).
+<b>VuePress sites</b> are optimized for technical documentation. Content is written as markdown files. VuePress compiles the markdown files into html. Behind the scenes Vue takes over and turns the HTML into components and presents it all as a single-page application. If you'd like a more detailed understanding of how it works, see the [VuePress documentation](https://v1.vuepress.vuejs.org/guide/).
 
-<b>TravisCI</b> builds the site: it takes the markdown files in the main GitHub branch, runs the Vuepress build script, and pushes the built files back to a different GitHub branch which will be used for publishing the site. 
+<b>TravisCI</b> builds the site: it takes the markdown files in the main GitHub branch, runs the VuePress build script, and pushes the built files back to a different GitHub branch which will be used for publishing the site. 
 
 The site is hosted from that branch via <b>GitHub pages</b>, which is a free and easy way to host directly from your GitHub repository. 
 
 ## Benefits
 ### Minimal Development
-Vuepress makes it easy to build a technical documentation site. Moreover, AS has several existing sites using this pattern which can serve as a reference for most of the intial setup, so very little development is required to start a new site; heavy lifting such as incorporating the official Northwestern colors into the style has already been done and can be reused by new sites. 
+VuePress makes it easy to build a technical documentation site. Moreover, AS has several existing sites using this pattern which can serve as a reference for most of the initial setup, so very little development is required to start a new site; heavy lifting such as incorporating the official Northwestern colors into the style has already been done and can be reused by new sites. 
 
 ### Minimal Upkeep
 Once published, the site requires little maintenance beyond keeping dependencies (VuePress) up-to-date, and occasionally updating the Node.js version Travis builds on to ensure it is supported.
 
 ### Collaborative
-The .md structure is easily adopted by developers, who are already accustomed with writing this style of documentation in their repositories. Edits and additions can be drafted right on GitHub, approved by the codeowners via a pull request, and are automatically built and published by TravisCI once approved, making it maximally easy to have many contributors while maintaining oversight. 
+The .md structure is easily adopted by developers, who are already accustomed with writing this style of documentation in their repositories. Edits and additions can be drafted right on GitHub, approved by the code-owners via a pull request, and are automatically built and published by TravisCI once approved, making it maximally easy to have many contributors while maintaining oversight. 
 
 ## Implementation Considerations
 The GitHub repository must be public (open to anyone outside of the Northwestern Organization) in order to use TravisCI and GitHub Pages for free.
