@@ -24,6 +24,7 @@ module.exports = {
                     'roles-responsibilities',
                     'design-for-cloud',
                     'tools',
+                    'docs-site',
                 ],
             },
             {
