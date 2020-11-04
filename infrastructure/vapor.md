@@ -12,7 +12,7 @@ The initial setup for an application requires you to:
 
 - Create a project (in prod & nonprod)
 - Create any optional resources (RDS instances / elasticache clusters)
-- Generate certificate request(s) for each environment & validate them
+- Generate certificate request(s) for each environment & validate them (make sure your vapor CLI is logged in to the proper team `vapor team:current` to switch the team `vapor team:switch`)
     - `vapor cert my-subdomain.northwestern.edu` from the CLI w/ subsequent request to SOC for the validation records
 
 Vapor natively supports RDS. For smaller applications & dev/test environments, you can use RDS Aurora Serverless at cost similar to DyanmoDB. 
