@@ -1,8 +1,6 @@
 name: Verify the Site Builds
 
 on:
-  push:
-    branches: [ stable ]
   pull_request:
     branches: [ stable ]
 
