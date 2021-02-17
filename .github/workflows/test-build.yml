@@ -2,9 +2,9 @@ name: Verify the Site Builds
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ stable ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ stable ]
 
 jobs:
   build:
