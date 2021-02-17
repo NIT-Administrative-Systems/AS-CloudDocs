@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Problem with Branching from Dev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitgraph.js/1.15.1/gitgraph.min.css" integrity="sha256-NMEjcOKIgq9M/7nn2CN6xNwRXbgpYFOIBCdivsdNDTA=" crossorigin="anonymous" />
+</head>
+
+<canvas id="gitGraph"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gitgraph.js/1.15.1/gitgraph.min.js" integrity="sha256-2OL2RqyBHdJia3zmhr2c1wkmzFGfmDCPcXJWaLWbclE=" crossorigin="anonymous"></script>
+
+<script>
+    var gitgraph = new GitGraph({
+        elementId: "gitGraph",
+        template: 'metro',
+        reverseArrow: false,
+        orientation: "horizontal",
+    });
+    gitgraph.template.branch.showLabel = true;
+    gitgraph.template.branch.labelRotation = 0;
+    gitgraph.template.branch.labelFont = 'normal 14pt Arial';
+    gitgraph.template.commit.spacingX = -55;
+
+    var prodBranch = gitgraph.branch("prod");
+    prodBranch.commit("Initial commit").commit("Use Northwestern CSS").commit("Add Northwestern IT lockup img");
+    // prodBranch.branch('fix-a-bug').commit('Correct instruction text').merge(prodBranch);
+
+    var devBranch = prodBranch.branch("dev");
+    devBranch.commit("Add experimental widget").commit("Change widget colours").commit("PoC for the web-based frobulator");
+
+    var addFeatureBranch = devBranch.branch('edit-screen');
+    addFeatureBranch.commit('Add an edit feature').commit('Add tests for new edit page');
+
+    devBranch.commit("Refine frobulator PoC UI");
+
+    addFeatureBranch.merge(prodBranch);
+</script>
+
+</html>

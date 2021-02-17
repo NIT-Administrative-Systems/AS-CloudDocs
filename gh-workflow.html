@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GitHub Code Workflow</title>
+</head>
+
+<!--
+-- Flowchart.js syntax. See http://flowchart.js.org/ for details.
+--
+-- We've done it this way so it's easy to update the charts in the future.
+--
+-- @TODO: turn this into a Vuejs component so we can embed directly into the relevant articles.
+-->
+<textarea id="diagram-definition" style="display: none;">
+createBranch=>start: Create Feature / Bugfix Branch
+doDev=>operation: Doing development ...
+prToDev=>operation: Submit Pull Request
+to Dev Branch
+prReview=>condition: Leads Review PR
+OK to Merge?
+mergeToDev=>operation: Merge to dev
+prToQA=>condition: PR Review
+OK to 
+mergeToQA=>operation: Repeat for QA
+mergeToProduction=>end: Repeat for Production
+
+createBranch->doDev->prToDev->prReview
+prReview(yes)->mergeToDev
+prReview(no)->doDev
+mergeToDev->mergeToQA->mergeToProduction
+</textarea>
+
+<div style="text-align: center">
+    <div id="diagram"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" integrity="sha256-BgmwZ6j044t3GCQhmJtpiHkUGVYzjapcGWjBH4dVnes=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.11.3/flowchart.min.js" integrity="sha256-YwLJwQt+hT+c1DCOHreZPY6kKlXl6UNOkKhDodA7Wqw=" crossorigin="anonymous"></script>
+<script>
+    var diagram = flowchart.parse(document.getElementById('diagram-definition').value);
+    diagram.drawSVG('diagram');
+</script>
+
+</html>

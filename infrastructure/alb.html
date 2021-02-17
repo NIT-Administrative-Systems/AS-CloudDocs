@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Application Load Balancers | AS Cloud Docs</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link href="https://common.northwestern.edu/v8/icons/favicon-16.png" rel="icon" sizes="16x16" type="image/png">
+    <link href="https://common.northwestern.edu/v8/icons/favicon-32.png" rel="icon" sizes="32x32" type="image/png">
+    <meta name="description" content="Docs for Northwestern IT staff on our cloud implementation.">
+    <link rel="preload" href="/AS-CloudDocs/assets/css/0.styles.66b7ce55.css" as="style"><link rel="preload" href="/AS-CloudDocs/assets/js/app.ae460c7c.js" as="script"><link rel="preload" href="/AS-CloudDocs/assets/js/2.868eda97.js" as="script"><link rel="preload" href="/AS-CloudDocs/assets/js/30.f9ce488b.js" as="script"><link rel="prefetch" href="/AS-CloudDocs/assets/js/10.9c3425ea.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/11.ac0cecc6.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/12.6bd0e6ba.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/13.9ca59192.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/14.e57694b1.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/15.89cc6230.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/16.e55c84ba.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/17.4c7d7f3a.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/18.7afbb7e8.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/19.c0166409.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/20.3d997d9c.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/21.9c8b6104.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/22.6436862a.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/23.4fc19cec.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/24.7df3799d.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/25.61a7df8a.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/26.7558c1a5.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/27.63bd6ea2.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/28.055ebb0b.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/29.a5382a9b.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/3.f29b8e39.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/31.26a400c3.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/32.c770c34a.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/33.8f326431.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/34.84ff26a4.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/35.75b0d681.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/36.1e82fcff.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/37.1b4b47bf.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/38.431607e7.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/39.70913066.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/4.0eba8a6a.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/40.343909fa.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/41.dc1656de.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/42.5d3404e4.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/43.c442575a.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/44.e29015d5.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/5.7da5a2df.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/6.1247cfd9.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/7.756be9c0.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/8.82adb3b5.js"><link rel="prefetch" href="/AS-CloudDocs/assets/js/9.40a788ea.js">
+    <link rel="stylesheet" href="/AS-CloudDocs/assets/css/0.styles.66b7ce55.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/AS-CloudDocs/" class="home-link router-link-active"><!----> <span class="site-name">AS Cloud Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/NIT-Administrative-Systems/AS-CloudDocs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/NIT-Administrative-Systems/AS-CloudDocs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Introduction</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/AS-CloudDocs/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/AS-CloudDocs/roles-responsibilities.html" class="sidebar-link">Roles &amp; Responsibilities</a></li><li><a href="/AS-CloudDocs/design-for-cloud.html" class="sidebar-link">Designing Apps for the Cloud</a></li><li><a href="/AS-CloudDocs/tools.html" class="sidebar-link">Tool Recommendations</a></li><li><a href="/AS-CloudDocs/docs-site.html" class="sidebar-link">Documentation Site</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Infrastructure</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/AS-CloudDocs/infrastructure/aws-account-design.html" class="sidebar-link">AWS Account Structure</a></li><li><a href="/AS-CloudDocs/infrastructure/tagging.html" class="sidebar-link">Tagging Resources</a></li><li><a href="/AS-CloudDocs/infrastructure/vpc-ip-addr.html" class="sidebar-link">VPCs &amp; IP Addressing</a></li><li><a href="/AS-CloudDocs/infrastructure/alb.html" aria-current="page" class="active sidebar-link">Application Load Balancers</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/AS-CloudDocs/infrastructure/alb.html#alb-concepts" class="sidebar-link">ALB Concepts</a></li><li class="sidebar-sub-header"><a href="/AS-CloudDocs/infrastructure/alb.html#using-the-shared-alb" class="sidebar-link">Using the Shared ALB</a></li></ul></li><li><a href="/AS-CloudDocs/infrastructure/certificates.html" class="sidebar-link">Certificates</a></li><li><a href="/AS-CloudDocs/infrastructure/api-gateway.html" class="sidebar-link">API Gateway</a></li><li><a href="/AS-CloudDocs/infrastructure/lambda.html" class="sidebar-link">Lambda</a></li><li><a href="/AS-CloudDocs/infrastructure/ecs-fargate.html" class="sidebar-link">Fargate for ECS</a></li><li><a href="/AS-CloudDocs/infrastructure/ses.html" class="sidebar-link">Simple Email Service (SES)</a></li><li><a href="/AS-CloudDocs/infrastructure/iam.html" class="sidebar-link">Identity &amp; Access Management (IAM)</a></li><li><a href="/AS-CloudDocs/infrastructure/databases.html" class="sidebar-link">Databases</a></li><li><a href="/AS-CloudDocs/infrastructure/secrets.html" class="sidebar-link">Secret Management</a></li><li><a href="/AS-CloudDocs/infrastructure/alerts.html" class="sidebar-link">Alerts</a></li><li><a href="/AS-CloudDocs/infrastructure/cloudfront.html" class="sidebar-link">CloudFront CDN</a></li><li><a href="/AS-CloudDocs/infrastructure/vapor.html" class="sidebar-link">Laravel Vapor</a></li><li><a href="/AS-CloudDocs/infrastructure/aws-service-scheduler.html" class="sidebar-link">AWS Service Scheduler</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Infrastructure as Code</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/AS-CloudDocs/iac/terraform-concepts.html" class="sidebar-link">Terraform</a></li><li><a href="/AS-CloudDocs/iac/as-tf-modules.html" class="sidebar-link">AS Terraform Modules</a></li><li><a href="/AS-CloudDocs/iac/example-tf.html" class="sidebar-link">Example Terraform Module</a></li><li><a href="/AS-CloudDocs/iac/available-modules.html" class="sidebar-link">Available Modules</a></li><li><a href="/AS-CloudDocs/iac/state-buckets.html" class="sidebar-link">State Bucket Reference</a></li><li><a href="/AS-CloudDocs/iac/tf-import.html" class="sidebar-link">Terraform Import</a></li><li><a href="/AS-CloudDocs/iac/tf-move.html" class="sidebar-link">Terraform State Move</a></li><li><a href="/AS-CloudDocs/iac/tf-upgrading.html" class="sidebar-link">Upgrading Terraform</a></li><li><a href="/AS-CloudDocs/iac/faq.html" class="sidebar-link">Frequently Asked Questions</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>CI &amp; CD</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/AS-CloudDocs/ci-cd/jenkins.html" class="sidebar-link">Jenkins Pipelines</a></li><li><a href="/AS-CloudDocs/ci-cd/shared-libs.html" class="sidebar-link">Shared Library</a></li><li><a href="/AS-CloudDocs/ci-cd/jenkins-ecs-agent.html" class="sidebar-link">Jenkins ECS Agent</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Application Development</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/AS-CloudDocs/development/principles.html" class="sidebar-link">Design Principles</a></li><li><a href="/AS-CloudDocs/development/app-patterns.html" class="sidebar-link">Application Patterns</a></li><li><a href="/AS-CloudDocs/development/libraries.html" class="sidebar-link">Packages &amp; Libraries</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>GitHub</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/AS-CloudDocs/github/settings-permissions.html" class="sidebar-link">Settings &amp; Permissions</a></li><li><a href="/AS-CloudDocs/github/repo-layout.html" class="sidebar-link">Repository Structure</a></li><li><a href="/AS-CloudDocs/github/workflow.html" class="sidebar-link">Workflow</a></li><li><a href="/AS-CloudDocs/github/policies.html" class="sidebar-link">Policy</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="application-load-balancers"><a href="#application-load-balancers" class="header-anchor">#</a> Application Load Balancers</h1> <p>Application Load Balancers (ALBs) are Amazon's latest load balancer offering. They are a significant upgrade over the classic Elastic Load Balancers (ELBs) -- one running ALB can inspect an HTTP request's <code>Host</code> header and route to the correct application, eliminating the need for several always-on load balancers.</p> <p>If your application requires a load balancer, an ALB should be the first choice. There may be some advanced cases where a Network Load Balancer (NLB) is appropriate instead.</p> <p>The EACD-CloudOps group provisions an ALB intended to be shared by several microservice or API applications in each AWS account. The information needed to use this shared ALB is available through your shared account resource IaC module.</p> <div class="custom-block warning"><p class="custom-block-title">Customer-Facing Applications</p> <p>The shared account ALB is <strong>not</strong> intended for use by customer-facing web applications.</p> <p>Only one app may create a listener for port 443. Using non-standard ports for APIs is a good trade-off of cost:convenience, since most of our services are going to be proxied through the API gateway provider anyway.</p> <p>You can provision your own ALB directly with terraform, or by using our <a href="/AS-CloudDocs/iac/available-modules.html">ALB terraform module</a>.</p></div> <h2 id="alb-concepts"><a href="#alb-concepts" class="header-anchor">#</a> ALB Concepts</h2> <p>Application Load Balancers have a few moving parts that you will need to understand.</p> <ul><li>The ALB resource itself, which lives in multiple AZs and has a hostname assigned to it</li> <li>Listeners bound to a port/protocol (e.g. HTTPS on 443) with an associated TLS certificate</li> <li>Rules tied to a listener that route traffic based on the <code>Host</code> header</li> <li>Target groups -- your application -- to deliver the load-balanced traffic to</li></ul> <p>ALBs are not able to support an infinite amount of listeners/rules/target groups, so it is important that you create the minimum you require per account. The EACD-CloudOps group will monitor capacity and provision a second shared ALB if/when that becomes necessary.</p> <p>If your application is running on an AWS service that supports it, instances (ECS tasks, EC2s, etc) can register themselves with the target group. You can statically register instances to the target group as well.</p> <p>For a standard application in the non-prod environment, you would create:</p> <ul><li>One listener with one SAN certificate for the dev &amp; qa environments</li> <li>Two rules, one for each the dev &amp; qa environments</li> <li>Two target groups, one for each the dev &amp; qa envrionments</li></ul> <p>If you need more environments in nonprod, that is fine -- you should still only use one listener.</p> <h2 id="using-the-shared-alb"><a href="#using-the-shared-alb" class="header-anchor">#</a> Using the Shared ALB</h2> <p>Using the shared ALB is a two-step process.</p> <p>You will need to run a module for the AWS account (nonprod &amp; prod), as well as a per-environment module.</p> <h3 id="per-account"><a href="#per-account" class="header-anchor">#</a> Per Account</h3> <p>The per-account module will create a listener and certificate, then publish the listener's ARN:</p> <div class="language-hcl extra-class"><pre class="language-hcl"><code><span class="token keyword">data <span class="token type variable">&quot;terraform_remote_state&quot;</span></span> <span class="token string">&quot;account_resources&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">backend</span> <span class="token punctuation">=</span> <span class="token string">&quot;s3&quot;</span>
+
+  <span class="token property">config</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+    <span class="token property">bucket</span> <span class="token punctuation">=</span> var.alb_state_bucket
+    <span class="token property">key</span>    <span class="token punctuation">=</span> var.alb_state_file
+    <span class="token property">region</span> <span class="token punctuation">=</span> var.alb_state_region
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">module<span class="token type variable"> &quot;certificate&quot; </span></span><span class="token punctuation">{</span>
+    <span class="token comment">// The double slash IS significant &lt;https://www.terraform.io/docs/modules/sources.html#modules-in-package-sub-directories&gt;</span>
+    <span class="token property">source</span> <span class="token punctuation">=</span> <span class="token string">&quot;github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules//entapp_certificate?ref=tf-0.12&quot;</span>
+
+    <span class="token property">hostnames</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;my-app-dev.entapp.northwestern.edu&quot;</span>, <span class="token string">&quot;my-app-qa.entapp.northwestern.edu&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">resource <span class="token type variable">&quot;aws_lb_listener&quot;</span></span> <span class="token string">&quot;lb_listener&quot;</span> <span class="token punctuation">{</span>
+    <span class="token property">load_balancer_arn</span> <span class="token punctuation">=</span> data.terraform_remote_state.account_resources.outputs.lb_arn
+    <span class="token property">port</span>              <span class="token punctuation">=</span> <span class="token string">&quot;443&quot;</span>
+    <span class="token property">protocol</span>          <span class="token punctuation">=</span> <span class="token string">&quot;HTTPS&quot;</span>
+    <span class="token property">ssl_policy</span>        <span class="token punctuation">=</span> <span class="token string">&quot;ELBSecurityPolicy-2016-08&quot;</span>
+    <span class="token property">certificate_arn</span>   <span class="token punctuation">=</span> module.certificate.certificate_arn
+
+    <span class="token keyword">default_action</span> <span class="token punctuation">{</span>
+        <span class="token property">type</span> <span class="token punctuation">=</span> <span class="token string">&quot;fixed-response&quot;</span>
+        <span class="token keyword">fixed_response</span> <span class="token punctuation">{</span>
+            <span class="token property">content_type</span> <span class="token punctuation">=</span> <span class="token string">&quot;text/plain&quot;</span>
+            <span class="token property">message_body</span> <span class="token punctuation">=</span> <span class="token string">&quot;No targets are responding to this request.&quot;</span>
+            <span class="token property">status_code</span> <span class="token punctuation">=</span> <span class="token string">&quot;502&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">output<span class="token type variable"> &quot;alb_listener_arn&quot; </span></span><span class="token punctuation">{</span>
+    <span class="token property">value</span> <span class="token punctuation">=</span> aws_lb_listener.lb_listener.arn
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="per-environment"><a href="#per-environment" class="header-anchor">#</a> Per Environment</h3> <p>The per-environment module will reference the listener ARN by loading its tfstate as a remote data:</p> <div class="language-hcl extra-class"><pre class="language-hcl"><code><span class="token comment"># Need the VPC ID</span>
+<span class="token keyword">data <span class="token type variable">&quot;terraform_remote_state&quot;</span></span> <span class="token string">&quot;account_resources&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">backend</span> <span class="token punctuation">=</span> <span class="token string">&quot;s3&quot;</span>
+
+  <span class="token property">config</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+    <span class="token property">bucket</span> <span class="token punctuation">=</span> var.account_resources_state_bucket
+    <span class="token property">key</span>    <span class="token punctuation">=</span> var.account_resources_state_file
+    <span class="token property">region</span> <span class="token punctuation">=</span> var.account_resources_state_region
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># For the listener ARN</span>
+<span class="token keyword">data <span class="token type variable">&quot;terraform_remote_state&quot;</span></span> <span class="token string">&quot;alb_listener&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">backend</span> <span class="token punctuation">=</span> <span class="token string">&quot;s3&quot;</span>
+
+  <span class="token property">config</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+    <span class="token property">bucket</span> <span class="token punctuation">=</span> var.shared_state_bucket
+    <span class="token property">key</span>    <span class="token punctuation">=</span> var.shared_state_file
+    <span class="token property">region</span> <span class="token punctuation">=</span> var.shared_state_region
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># So TF knows when to re-generate the target group name</span>
+<span class="token keyword">resource <span class="token type variable">&quot;random_id&quot;</span></span> <span class="token string">&quot;target_group_id&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">keepers</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+    <span class="token property">name</span> <span class="token punctuation">=</span> local.lb_target_group_name
+    <span class="token property">vpc_id</span> <span class="token punctuation">=</span> data.terraform_remote_state.account_resources.outputs.vpc_id
+    <span class="token property">target_type</span> <span class="token punctuation">=</span> local.lb_target_group_target_type
+  <span class="token punctuation">}</span>
+  <span class="token property">byte_length</span> <span class="token punctuation">=</span> <span class="token number">4</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">resource <span class="token type variable">&quot;aws_lb_target_group&quot;</span></span> <span class="token string">&quot;lb_target_group&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span>     <span class="token punctuation">=</span> local.lb_target_group_name<span class="token punctuation">}</span>-$<span class="token punctuation">{</span>random_id.target_group_id.hex
+  <span class="token property">port</span>     <span class="token punctuation">=</span> <span class="token string">&quot;8080&quot;</span>
+  <span class="token property">protocol</span> <span class="token punctuation">=</span> <span class="token string">&quot;HTTP&quot;</span>
+  <span class="token property">deregistration_delay</span> <span class="token punctuation">=</span> var.deregistration_delay
+  <span class="token property">target_type</span> <span class="token punctuation">=</span> local.lb_target_group_target_type
+  <span class="token property">vpc_id</span> <span class="token punctuation">=</span> data.terraform_remote_state.account_resources.outputs.vpc_id
+
+  <span class="token keyword">health_check</span> <span class="token punctuation">{</span>
+    <span class="token property">healthy_threshold</span> <span class="token punctuation">=</span> var.hc_healthy_threshold
+    <span class="token property">unhealthy_threshold</span> <span class="token punctuation">=</span> var.hc_unhealthy_threshold
+    <span class="token property">timeout</span> <span class="token punctuation">=</span> var.hc_timeout
+    <span class="token property">interval</span> <span class="token punctuation">=</span> var.hc_interval
+    <span class="token property">path</span> <span class="token punctuation">=</span> var.hc_path
+    <span class="token property">matcher</span> <span class="token punctuation">=</span> var.hc_matcher
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
+    <span class="token property">create_before_destroy</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">resource <span class="token type variable">&quot;aws_lb_listener_rule&quot;</span></span> <span class="token string">&quot;lb_group_rule&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">listener_arn</span> <span class="token punctuation">=</span> data.terraform_remote_state.alb_listener.outputs.alb_listener_arn
+
+  <span class="token keyword">action</span> <span class="token punctuation">{</span>
+    <span class="token property">type</span>             <span class="token punctuation">=</span> <span class="token string">&quot;forward&quot;</span>
+    <span class="token property">target_group_arn</span> <span class="token punctuation">=</span> aws_lb_target_group.lb_target_group.arn
+  <span class="token punctuation">}</span>
+  
+  <span class="token keyword">condition</span> <span class="token punctuation">{</span>
+    <span class="token property">field</span>  <span class="token punctuation">=</span> <span class="token string">&quot;host-header&quot;</span>
+    <span class="token property">values</span> <span class="token punctuation">=</span> var.hostnames
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># In this example, we're using a Fargate ECS cluster as a target.</span>
+<span class="token comment"># Other services support registering with the target group too.</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_ecs_service&quot;</span></span> <span class="token string">&quot;ecs_task_serv&quot;</span> <span class="token punctuation">{</span>
+    <span class="token property">name</span> <span class="token punctuation">=</span> local.ecs_task_name
+    
+    <span class="token comment"># . . .</span>
+
+    <span class="token keyword">load_balancer</span> <span class="token punctuation">{</span>
+        <span class="token property">target_group_arn</span> <span class="token punctuation">=</span> aws_lb_target_group.lb_target_group.arn
+        <span class="token property">container_name</span>   <span class="token punctuation">=</span> local.container_name
+        <span class="token property">container_port</span>   <span class="token punctuation">=</span> <span class="token number">80</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/NIT-Administrative-Systems/AS-CloudDocs/edit/stable/infrastructure/alb.md" target="_blank" rel="noopener noreferrer">Edit Page</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">4/5/2020, 6:56:26 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/AS-CloudDocs/infrastructure/vpc-ip-addr.html" class="prev">
+        VPCs &amp; IP Addressing
+      </a></span> <span class="next"><a href="/AS-CloudDocs/infrastructure/certificates.html">
+        Certificates
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/AS-CloudDocs/assets/js/app.ae460c7c.js" defer></script><script src="/AS-CloudDocs/assets/js/2.868eda97.js" defer></script><script src="/AS-CloudDocs/assets/js/30.f9ce488b.js" defer></script>
+  </body>
+</html>
