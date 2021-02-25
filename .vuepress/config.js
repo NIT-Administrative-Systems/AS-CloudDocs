@@ -79,6 +79,10 @@ module.exports = {
                 children: [
                     'principles',
                     'app-patterns',
+                    'laravel-stack',
+                    'express-stack',
+                    'spring-stack',
+                    'frontend-stacks',
                     'libraries',
                 ].map(file => 'development/' + file),
             },            
