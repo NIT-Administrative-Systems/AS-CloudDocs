@@ -35,7 +35,7 @@ stage ('Init') {
             [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'terraform', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']
         ]) {
             // Need to set up the Git credential helper since terraform init will be cloning the shared modules itself
-            // Kinda kludgey that the pipeline has to whitelist the module URLs, but :/
+            // Kinda kludgey that the pipeline has to permit the module URLs, but :/
             sh """export GITHUB_USERNAME='${GITHUB_USERNAME}' &&
             export GITHUB_PASSWORD='${GITHUB_PASSWORD}' &&
             git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f' &&
