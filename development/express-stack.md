@@ -32,7 +32,7 @@ Using the same libraries will allow AS developers to transfer between projects m
 | [node-oracledb](https://github.com/oracle/node-oracledb) <sup>*</sup>                                  | Oracle DB driver                     |
 | [@sentry/node](https://www.npmjs.com/package/@sentry/node) †                                           | Error logging                        |
 | AirBnB eslint rules                                                                                    | Code style                           |
-
+| [body parser](https://github.com/expressjs/body-parser)                                                | Express middleware to parse HTTP request body| 
 <small><sup>*</sup> See the [section below](#oracle-on-aws-lambda) on setting up the Oracle driver.</small>
 
 <small>† Sentry recently released `@sentry/serverless` for NodeJS on Lambda. This package has not yet been evaluated.</small>
@@ -106,4 +106,3 @@ Oracle provides a node package wrapping their driver. Setting it up is not diffi
     MacOS & Windows users could run this locally by adding their platform's Oracle drivers. It is not advisable to add the instantclient for Windows or MacOS to git, as the files are very large.
 
     > If you are on Windows or Mac, you will need to download the basic instant client zip file. On Windows, you can unpack it into the lib/ folder. On Mac, you will need to unpack it to ~/lib, outside of the project directory. On both operating systems, it should be automatically detected when you run the app.
-
