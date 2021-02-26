@@ -30,13 +30,47 @@ Using the same libraries will allow AS developers to transfer between projects m
 | [libphonenumber](https://github.com/google/libphonenumber#third-party-ports)                           | Phone number info & validation       |
 | [Axios](https://github.com/axios/axios)                                                                | HTTP client                          |
 | [node-oracledb](https://github.com/oracle/node-oracledb) <sup>*</sup>                                  | Oracle DB driver                     |
+| [@sentry/node](https://www.npmjs.com/package/@sentry/node) †                                           | Error logging                        |
+| AirBnB eslint rules                                                                                    | Code style                           |
 
 <small><sup>*</sup> See the [section below](#oracle-on-aws-lambda) on setting up the Oracle driver.</small>
+
+<small>† Sentry recently released `@sentry/serverless` for NodeJS on Lambda. This package has not yet been evaluated.</small>
 
 There is currently no consensus on a JS testing framework. ADO has used the following successfully:
 
 - [Mocha](https://mochajs.org/), [Chai](https://www.chaijs.com/), & [Istanbul](https://istanbul.js.org/)
 - [Jest](https://jestjs.io/)
+
+## Code Style & Linting
+The `airbnb-base` set of rules for eslint should be used to ensure source code is formatted the same and complies with the same set of rules. 
+
+The [template repository](https://github.com/NIT-Administrative-Systems/AS-serverless-nodejs-api) already has eslint set up. If you need to add this to an existing project:
+
+1. Add the packages as dev dependencies:
+
+    `yarn add --dev eslint eslint-config-airbnb-base eslint-plugin-import`
+
+1. Create a `.eslintrc.js` file in the root of your project:
+
+    ```js
+    module.exports = {
+        "extends": "airbnb-base",
+        "env": {
+            "node": true,
+            "es6": true,
+            "mocha": true
+        },
+        "rules": {
+            "no-console": "off",
+            "max-len": "off"
+        }
+    };
+    ```
+
+1. Ensure your editor of choice has integration with eslint installed
+
+    - [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 ## Oracle on AWS Lambda
 Oracle provides a node package wrapping their driver. Setting it up is not difficult, but it is more involved than a simple `yarn add`.
