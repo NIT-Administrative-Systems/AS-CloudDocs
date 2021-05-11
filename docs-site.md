@@ -21,7 +21,7 @@ Once published, the site requires little maintenance beyond keeping dependencies
 The .md structure is easily adopted by developers, who are already accustomed with writing this style of documentation in their repositories. Edits and additions can be drafted right on GitHub, approved by the code-owners via a pull request, and are automatically built and published by GitHub Actions once approved, making it maximally easy to have many contributors while maintaining oversight. 
 
 ## Implementation Considerations
-GitHub Pages allows you can offer either a public or private site. Private GitHub Pages sites will use your repository's access settings to determine who can view them. 
+GitHub Pages allows you to offer either a public or private site. Private GitHub Pages sites will use your repository's access settings to determine who can view them. 
 
 The default domain for a *public* GitHub Pages site in the Northwestern Administrative Systems GitHub organization is https://nit-administrative-systems.github.io/{your-site}/, this is sufficient for some sites (like this one!). For *private* sites, you will receive an auto-generated hostname that does not reflect your repository name or the NIT-Administrative-Systems org.
 
