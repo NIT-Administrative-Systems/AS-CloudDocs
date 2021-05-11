@@ -1,14 +1,14 @@
 # Documentation Site
-Want to build a docs site like this one? This site is generated from markdown files by [VuePress](https://vuepress.vuejs.org/), built by [GitHub Actions](https://docs.github.com/en/actions), and deployed with [GitHub Pages](https://pages.github.com/). For a public website, there is no cost associated with any of this.
+Want to build a docs site like this one? This site is generated from markdown files by [VuePress](https://vuepress.vuejs.org/), built by [GitHub Actions](https://docs.github.com/en/actions), and deployed with [GitHub Pages](https://pages.github.com/). 
+
+There is no cost associated with any of this.
 
 ## Overview
 **VuePress sites** are optimized for technical documentation. Content is written as markdown files. VuePress compiles the markdown files into html. Behind the scenes Vue takes over and turns the HTML into components and presents it all as a single-page application. If you'd like a more detailed understanding of how it works, see the [VuePress documentation](https://v1.vuepress.vuejs.org/guide/).
 
 **GitHub Actions** builds the site: it takes the markdown files in the default GitHub branch, runs the VuePress build script, and pushes the built files back to a different GitHub branch which will be used for publishing the site. 
 
-The site is hosted from that branch via **GitHub pages**, which is a free and easy way to host directly from your GitHub repository. 
-
-AS previously used TravisCI instead of GitHub Actions. However, in November 2020, [TravisCI announced changes to their business model and began limiting builds for public repositories](https://blog.travis-ci.com/oss-announcement).
+The site is hosted from that branch via **GitHub Pages**, which is a free and easy way to host directly from your GitHub repository. 
 
 ## Benefits
 ### Minimal Development
@@ -21,19 +21,23 @@ Once published, the site requires little maintenance beyond keeping dependencies
 The .md structure is easily adopted by developers, who are already accustomed with writing this style of documentation in their repositories. Edits and additions can be drafted right on GitHub, approved by the code-owners via a pull request, and are automatically built and published by GitHub Actions once approved, making it maximally easy to have many contributors while maintaining oversight. 
 
 ## Implementation Considerations
-The GitHub repository must be public (open to anyone outside of the Northwestern Organization) in order to use GitHub Actions and GitHub Pages for free.
+GitHub Pages allows you can offer either a public or private site. Private GitHub Pages sites will use your repository's access settings to determine who can view them. 
 
-The documentation site is also public (open to anyone outside of Northwestern) - it is feasible to put a VuePress site behind websso but that introduces more complexity to this design (it can no longer make use of this extremely simple building/hosting method with GitHub Actions and GitHub Pages). If you need to limit access to your documentation, the additional development and maintenance introduced may outweigh the benefits above; it's important to evaluate the best option for your documentation. 
+The default domain for a *public* GitHub Pages site in the Northwestern Administrative Systems GitHub organization is https://nit-administrative-systems.github.io/{your-site}/, this is sufficient for some sites (like this one!). For *private* sites, you will receive an auto-generated hostname that does not reflect your repository name or the NIT-Administrative-Systems org.
 
-The default domain for a GitHub Pages site in the Northwestern Administrative Systems GitHub organization is https://nit-administrative-systems.github.io/{your-site}/, this is sufficient for some sites (like this one!), or you are responsible for the necessary DNS requests if you would like to configure a custom domain (see the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site)).
+Both public & private sites can be given a custom `northwestern.edu` hostname. You are responsible for the necessary DNS requests if you would like to configure a custom domain -- see the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site). Note that hostnames under the `entapp.northwestern.edu` subdomain can be set up by the EACD-CloudOps team. Other requests must be sent to hostmaster.
 
 ## Starting Your Site
-We recommend you start by creating a repository for your work and getting a shell of your site running locally with Node.js, Yarn, and VuePress. The files in the `.github/workflow` folder control the GitHub Action for testing and deploying your site. Finally, once your deployment is setup, focus on the content and building out your .md files! Hosting can easily be enabled on your repository with GitHub Pages when you're ready.
+We recommend you start by creating a repository for your work and getting a shell of your site running locally with Node.js, Yarn, and VuePress. The files in the `.github/workflow` folder control the GitHub Action for testing and deploying your site. 
 
-:::warning Initial Deployment
-You may need to configure GitHub Pages in your repository settings manually to get the very first deployment to work. Subsequent deployments will not require any human intervention.
+After your GitHub action runs initially and creates a `gh-pages` branch with your static HTML content, GitHub Pages must be enabled on your repository. Submit a request to the EACD-CloudOps team to do this, and let them know if you want it to be a public or private site.
 
-[This is a limitation of GitHub Actions](https://github.com/peaceiris/actions-gh-pages/tree/75014632413b319cb87db5b3e54bba2d6a21ac05#%EF%B8%8F-first-deployment-with-github_token); it has permission to deploy to Pages, but not to initially set Pages up.
+::: warning EACD-CloudOps Note on Private GitHub Pages
+The UI to enable private pages doesn't seem to work properly at the time of writing.
+
+To publish a new private site, change the visibility and confirm what you're doing in the popup. It will redirect you to a 404 page. This is fine.
+
+Go back to the Pages settings and choose the `gh-pages` branch, then publish it. GitHub has recorded the attempt to swap the (as-then) unpublished site to private, and the new site will be correctly deployed as private.
 :::
 
 You can use the [this site's source code](https://github.com/NIT-Administrative-Systems/AS-CloudDocs) as a reference for the basic site structure, along with the VuePress documentation when you have questions.
