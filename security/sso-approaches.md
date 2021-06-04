@@ -55,7 +55,9 @@ You can [log in to the Azure console](https://portal.azure.com/#blade/Microsoft_
 
 You will need to configure your application's redirect URIs on its *Authentication* screen, create a secret on its *Certificates & secrets* screen, and get the client ID from the *Overview* screen.
 
-Since OpenID connect is a standard protocol built on OAuth2, your development framework is likely to have a plugin that supports it. If not, review [Microsoft's OpenID documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) on how to implement the authentication flow.
+Since OpenID connect is a standard protocol built on OAuth2, your development framework is likely to have a plugin that supports it. For Laravel, the [`laravel-soa` package](https://nit-administrative-systems.github.io/SysDev-laravel-soa/) includes a Socialite driver that will work with Northwestern's Azure AD tenant out of the box.
+
+If you cannot find an existing integration library or plugin, review [Microsoft's OpenID documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) on how to implement the authentication flow.
 
 When possible, you should configure applications with an additional parameter for the authorization redirect: `domain_hint=northwestern.edu`. This will skip the initial "enter your microsoft account" screen and sends the user directly to the Online Passport netID login screen.
 
@@ -99,7 +101,7 @@ resource "aws_lb_listener" "front_end" {
 }
 ```
 
-The redirect URI for the load balancer's OpenID provider is `https://your-app-name/oauth2/idpresponse`. Add this to the list of redirect URIs in the Azure AD console.
+The redirect URI for the load balancer's OpenID provider is `https://<your-app-hostname>/oauth2/idpresponse`. Add this to the list of redirect URIs in the Azure AD console.
 
 The forwarded request will include [some additional headers with auth information](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-authenticate-users.html#user-claims-encoding). To obtain the netID from this, you will need to parse the JWT and pull out the `userPrincipalName` claim.
 
