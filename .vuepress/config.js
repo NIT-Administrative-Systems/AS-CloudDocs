@@ -85,7 +85,14 @@ module.exports = {
                     'frontend-stacks',
                     'libraries',
                 ].map(file => 'development/' + file),
-            },            
+            },
+            {
+                title: 'Security',
+                collapsable: false,
+                children: [
+                    'sso-approaches',
+                ].map(file => 'security/' + file),                
+            },
             {
                 title: 'GitHub',
                 collapsable: false,
