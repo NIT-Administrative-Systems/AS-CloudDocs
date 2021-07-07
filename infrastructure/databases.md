@@ -119,7 +119,7 @@ In addition to CloudWatch, RDS event subscriptions can be configured to send ale
 One note about OpsGenie Alerts: RDS Clusters will NOT trigger RDS integrations, only RDS instances will. Instead, use regular SNS integrations for serverless clusters. As of 7/7/21 OpsGenie does not have this information in their documentation.
 
 An example:
-```
+```hcl
 resource "aws_db_event_subscription" "SUBSCRIPTION_NAME" {
 name = "rds-event-subscription"
 sns_topic = OPS_GENIE_ARN
@@ -141,4 +141,3 @@ event_categories = [
   ]
 }
 ```
-
