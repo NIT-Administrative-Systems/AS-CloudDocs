@@ -97,7 +97,7 @@ When spinning up an Aurora serverless RDS cluster, be aware of the following lim
 To enable log monitoring with cloudwatch, an RDS cluster parameter group will need to be created and assigned to your cluster, this can be done with terraform. The following log types can be published: audit, error, general, and slow query logs.
 
 For example, for PostgreSQL:
-```
+```hcl
 resource "aws_rds_cluster_parameter_group" "my_group" {
     name = "rds-cluster-pg"
     family = "aurora-postgresql10"
