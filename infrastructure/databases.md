@@ -116,7 +116,9 @@ If you have already created a cluster without a custom parameter group, it will 
 ### RDS Event Subscription
 In addition to CloudWatch, RDS event subscriptions can be configured to send alerts to OpsGenie via SNS (or any other service desired). [A list of events that can be subscribed to can be found here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html)
 
+::: warning
 One note about OpsGenie Alerts: RDS Clusters will NOT trigger RDS integrations, only RDS instances will. Instead, use regular SNS integrations for serverless clusters. As of 7/7/21 OpsGenie does not have this information in their documentation.
+:::
 
 An example:
 ```hcl
