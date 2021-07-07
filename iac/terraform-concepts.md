@@ -114,6 +114,11 @@ Enter the number of the account that you want to associate with the profile name
 aws-adfs login --adfs-host=ads-fed.northwestern.edu --provider-id urn:amazon:webservices --region us-east-2 **--profile YourProfileName**
 ```
 
+*Using an existing profile*
+```sh
+sudo aws-adfs login --profile YourProfileName
+```
+
 **3. aws-adfs reset --profile YourProfileName**
 
 Use this to delete the named profile from the list.
