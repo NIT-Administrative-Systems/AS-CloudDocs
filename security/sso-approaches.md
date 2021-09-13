@@ -46,7 +46,7 @@ To set up a SAML integration, you will need to get the service provider's SAML m
 ## Azure ActiveDirectory
 Azure ActiveDirectory (Azure AD) is Microsoft's cloud identity solution. Cyberinfrastructure's Collaboration Services have replicated all of our identities to Azure AD, it can be used in a similar fashion to OpenAM.
 
-As an added bonus, authenticating to Azure AD yields an access token that can call other Azure APIs. This can be used to load the user's profile picture & detailed contact information. If additional scopes are set up and the user consents, it can be used to integrate with their Outlook calendar or other O365 services.
+As an added bonus, authenticating to Azure AD yields an access token that can call the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api). This can be used to load the user's profile picture & detailed contact information. If additional scopes are set up and the user consents, it can be used to integrate with their Outlook calendar or other O365 services.
 
 ### Applications via OpenID Connect
 To use Azure AD's OpenID authentication, your application must be served via HTTPS, with an exception given for `localhost`.
