@@ -47,7 +47,7 @@ module.exports = {
                     'cloudfront',
                     'vapor',
                     'aws-service-scheduler.md',
-                ].map(file => 'infrastructure/' + file),
+                ].map(file => `infrastructure/${file}`),
             },
             {
                 title: 'Infrastructure as Code',
