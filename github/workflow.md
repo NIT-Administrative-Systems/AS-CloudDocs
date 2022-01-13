@@ -61,7 +61,7 @@ Once a PR is approved it can be merged into the target branch and the feature br
 
 
 ### Scenarios
-- My PR has been approved, I have merged and deployed my code but it does not fix the issue.  I continue to add commits to my feature.  Do I need approval again
+- My PR has been approved, I have merged and deployed my code but it does not fix the issue.  I continue to add commits to my feature.  Do I need approval again?
   - Yes
 - My PR has been approved; however, the reviewer has provided feedback.  Can I merge the code?  
   - Yes, but acknowledge/address the feedback.
