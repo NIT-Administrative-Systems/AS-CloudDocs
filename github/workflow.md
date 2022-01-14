@@ -57,7 +57,7 @@ Once a PR is approved it can be merged into the target branch and the feature br
 
 - Developer & Reviewer : If no issues are found the reviewer will approve the pull request.  At this point the developer should merge their changes and close the feature branch.  If the reviewer believes changes are required or has questions for the developer the reviewer should leave comments for the developer.  The developer and reviewer should work together to resolve the reviewers concerns.  If rework is needed, once it is complete the developer should click the Re-request review button on the PR to signal to the reviewer the re-work is ready for review.
 
-![Workflow Diagram](https://github.com/NIT-Administrative-Systems/AS-CloudDocs/blob/8fa5d683bd0b7e2720ed79d4ad77c0fde18140ff/assets/PR%20Workflow.png)
+![Workflow Diagram](../assets/PR%20Workflow.png)
 
 
 ### Scenarios
