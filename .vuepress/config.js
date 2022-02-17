@@ -70,7 +70,8 @@ module.exports = {
                 children: [
                     'jenkins',
                     'shared-libs',
-                    'jenkins-ecs-agent'
+                    'jenkins-ecs-agent',
+                    'gha'
                 ].map(file => 'ci-cd/' + file),
             },
             {
