@@ -51,7 +51,7 @@ GitHub provides Linux, Windows, and macOS virtual machines to run your workflows
 * [Starter/Template Workflows](https://github.com/actions/starter-workflows) - Contains templated workflows for common tasks
 * If you add a Repository Secret with the name ACTIONS_STEP_DEBUG and the value of 'true' this will turn on debugging logs for your Workflows.
 * YAML is all about indentation, and it is easy to cause yourself headaches due to missing a space.  Use a YAML linter like [this](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) for VSCode
-
+---
 
 ## Reusable Workflows and Custom NU Actions
 Non-authoratative list of NUIT developed workflows and actions that perform common actions
