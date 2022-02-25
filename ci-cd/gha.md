@@ -28,8 +28,7 @@ GitHub provides Linux, Windows, and macOS virtual machines to run your workflows
 * [Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) - This will guide you in creating your first workflow.
 * [GitHub Script](https://lab.github.com/githubtraining/github-actions:-using-github-script) - Create a workflow that uses the GitHub script action (more about this below).
 ---
-` `   
-` `  
+  
 
 ## Comparisons with Jenkins
 * Both allow creating custom/reusable functionality. Jenkins often accomplishes this via plug-ins in GitHub they are Marketplace Actions, Composite & Reuasable Workflows
@@ -37,8 +36,8 @@ GitHub provides Linux, Windows, and macOS virtual machines to run your workflows
 * Both support timed and manually triggered jobs.  Jenkins can be triggered by checking code into GitHub (and can likely do more via Plug-ins); however, GitHub Actions natively supports a more diverse and granular set of events, and seems better suited for automations
 * Both Jenkins and GitHub Actions support "secrets".  GitHub's approach seems more secure.
 ---
-` `   
-` `   
+ 
+
 
 ## Tips, Resources, & Useful Actions
 * [GitHub Checkout Action](https://github.com/actions/checkout) - Checks your code out of your repo so it can be used in your workflow.  Likely you will use this in most workflows.
@@ -52,3 +51,10 @@ GitHub provides Linux, Windows, and macOS virtual machines to run your workflows
 * [Starter/Template Workflows](https://github.com/actions/starter-workflows) - Contains templated workflows for common tasks
 * If you add a Repository Secret with the name ACTIONS_STEP_DEBUG and the value of 'true' this will turn on debugging logs for your Workflows.
 * YAML is all about indentation, and it is easy to cause yourself headaches due to missing a space.  Use a YAML linter like [this](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) for VSCode
+---
+
+## Reusable Workflows and Custom NU Actions
+Non-authoratative list of NUIT developed workflows and actions that perform common actions
+* [aws-secrets-sync-action](https://github.com/NIT-Administrative-Systems/aws-secrets-sync-action) Custom action to add secrets to AWS Parameter Store after successfully executing IAC
+* [ado-reusable-workflows-terraform](https://github.com/NIT-Administrative-Systems/ado-reusable-workflows-terraform) Reusable workflow that performs the common steps of executing terraform IAC as part of a PR or Build process
+
