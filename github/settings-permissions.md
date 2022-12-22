@@ -4,7 +4,7 @@ The Northwestern IT GitHub organization is maintained by the EACD team. It is av
 Membership in the GitHub organization and teams is controlled centerally. Since pushing code to a release branch in many of our repositories also bestows the authority to deploy to production by way of CI/CD, access requests must be documented and approved.
 
 ## Permissions
-The organization has teams that closely mirror the organizational chart, with a *leads* team added. A repository is typically owned by one team; its *leads* group will receive the *Maintain* permission, and the team will receive *Write* permission. For details on what the permission levels do, see [GitHub's permission matrix](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#repository-access-for-each-permission-level).
+The organization has teams that closely mirror the organizational chart, with a *leads* team added. A repository is typically owned by one team; its *leads* group will receive the *Admin* permission, and the team will receive *Write* permission. For details on what the permission levels do, see [GitHub's permission matrix](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#repository-access-for-each-permission-level).
 
 For example, the ADO department looks like this:
 
@@ -15,7 +15,7 @@ For example, the ADO department looks like this:
         - Peoplesoft
             - Peoplesoft-leads
 
-If the EACD team is responsible for the *ADO-CoolApp* repository, then the EACD-leads team will have Maintain, and the EACD team will have Write. No other groups will be able to view or push to the repository. The EACD-leads team may ask the Github admins to add other teams with read/write permissions to their repositories on an as-needed basis.
+If the EACD team is responsible for the *ADO-CoolApp* repository, then the EACD-leads team will have Admin, and the EACD team will have Write. No other groups will be able to view or push to the repository. The EACD-leads team may ask the Github admins to add other teams with read/write permissions to their repositories on an as-needed basis.
 
 At the request of a repository's owner, other teams can be added with read/write access.
 
