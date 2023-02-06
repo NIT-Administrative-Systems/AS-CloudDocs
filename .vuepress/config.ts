@@ -42,6 +42,7 @@ export default defineUserConfig({
                     'certificates',
                     'api-gateway',
                     'lambda',
+                    'file-handling-on-lambda',
                     'ecs-fargate',
                     'ses',
                     'iam',
