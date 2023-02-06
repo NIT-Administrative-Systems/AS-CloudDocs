@@ -1,34 +1,38 @@
-module.exports = {
+import { defaultTheme, defineUserConfig } from 'vuepress';
+
+import { searchProPlugin } from 'vuepress-plugin-search-pro';
+import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+
+export default defineUserConfig({
     title: 'AS Cloud Docs',
     description: 'Docs for Northwestern IT staff on our cloud implementation.',
-    dest: '.build/docs',
-    base: '/AS-CloudDocs/',
     head: [
         ['link', { href: 'https://common.northwestern.edu/v8/icons/favicon-16.png', rel: 'icon', sizes: '16x16', type: 'image/png' }],
         ['link', { href: 'https://common.northwestern.edu/v8/icons/favicon-32.png', rel: 'icon', sizes: '32x32', type: 'image/png' }],
     ],
+    pagePatterns: ['**/*.md', '!**/README.md', '!.vuepress', '!node_modules'],
+    base: '/AS-CloudDocs/',
 
-    themeConfig: {
+    theme: defaultTheme({
         repo: 'NIT-Administrative-Systems/AS-CloudDocs',
-        docsDir: '',
         docsBranch: 'stable',
-        editLinks: true,
+        editLink: true,
         editLinkText: 'Edit Page',
         lastUpdated: true,
-
-        sidebar: [{
-                title: 'Introduction',
+        sidebar: [
+            {
+                text: 'Introduction',
                 collapsable: false,
                 children: [
-                    ['/', 'Overview'],
-                    'roles-responsibilities',
-                    'design-for-cloud',
-                    'tools',
-                    'docs-site',
+                    '/',
+                    '/roles-responsibilities',
+                    '/design-for-cloud',
+                    '/tools',
+                    '/docs-site',
                 ],
             },
             {
-                title: 'Infrastructure',
+                text: 'Infrastructure',
                 collapsable: false,
                 children: [
                     'aws-account-design',
@@ -47,10 +51,10 @@ module.exports = {
                     'cloudfront',
                     'vapor',
                     'aws-service-scheduler.md',
-                ].map(file => 'infrastructure/' + file),
+                ].map(file => '/infrastructure/' + file),
             },
             {
-                title: 'Infrastructure as Code',
+                text: 'Infrastructure as Code',
                 collapsable: false,
                 children: [
                     'terraform-concepts',
@@ -62,20 +66,20 @@ module.exports = {
                     'tf-move',
                     'tf-upgrading',
                     'faq',
-                ].map(file => 'iac/' + file),
+                ].map(file => '/iac/' + file),
             },
             {
-                title: 'CI & CD',
+                text: 'CI & CD',
                 collapsable: false,
                 children: [
                     'jenkins',
                     'shared-libs',
                     'jenkins-ecs-agent',
                     'gha'
-                ].map(file => 'ci-cd/' + file),
+                ].map(file => '/ci-cd/' + file),
             },
             {
-                title: 'Application Development',
+                text: 'Application Development',
                 collapsable: false,
                 children: [
                     'principles',
@@ -85,25 +89,48 @@ module.exports = {
                     'spring-stack',
                     'frontend-stacks',
                     'libraries',
-                ].map(file => 'development/' + file),
+                ].map(file => '/development/' + file),
             },
             {
-                title: 'Security',
+                text: 'Security',
                 collapsable: false,
                 children: [
                     'sso-approaches',
-                ].map(file => 'security/' + file),                
+                ].map(file => '/security/' + file),
             },
             {
-                title: 'GitHub',
+                text: 'GitHub',
                 collapsable: false,
                 children: [
                     'settings-permissions',
                     'repo-layout',
                     'workflow',
                     'policies',
-                ].map(file => 'github/' + file),
+                ].map(file => '/github/' + file),
             },
         ],
-    },
-}
+    }),
+    plugins: [
+        searchProPlugin({
+            indexContent: true,
+            delay: 500,
+        }),
+        mdEnhancePlugin({
+            container: true,
+            tabs: true,
+            footnote: true,
+            mark: true,
+            mermaid: {
+                themeVariables: {
+                    primaryColor: '#4e2a84',
+                    primaryTextColor: '#fff',
+                    primaryBorderColor: '#b6acd1',
+                    lineColor: '#F8B229',
+                    tertiaryColor: '#fff',
+                },
+            },
+            include: true,
+            linkCheck: 'dev',
+        })
+    ],
+});
