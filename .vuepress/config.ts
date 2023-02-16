@@ -125,7 +125,9 @@ export default defineUserConfig({
                 themeVariables: {
                     darkMode: true,
                     primaryColor: '#4e2a84',
-                    primaryTextColor: '#adbac7',
+                    primaryTextColor: '#969699',
+                    primaryBorderColor: '#b6acd1',
+                    actorTextColor: '#eee',
                 },
             },
             include: true,
