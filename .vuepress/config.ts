@@ -123,11 +123,11 @@ export default defineUserConfig({
             mark: true,
             mermaid: {
                 themeVariables: {
+                    darkMode: true,
                     primaryColor: '#4e2a84',
-                    primaryTextColor: '#fff',
+                    primaryTextColor: '#969699',
                     primaryBorderColor: '#b6acd1',
-                    lineColor: '#F8B229',
-                    tertiaryColor: '#fff',
+                    actorTextColor: '#eee',
                 },
             },
             include: true,
