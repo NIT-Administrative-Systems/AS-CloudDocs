@@ -421,6 +421,11 @@
   resolved "https://registry.yarnpkg.com/@mdit-vue/types/-/types-0.11.0.tgz#ab9c6f4e69d9c9eaabf1a73e59dc699875b224ef"
   integrity sha512-ygCGP7vFpqS02hpZwEe1uz8cfImWX06+zRs08J+tCZRKb6k+easIaIHFtY9ZSxt7j9L/gAPLDo/5RmOT6z0DPQ==
 
+"@mdit-vue/types@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@mdit-vue/types/-/types-0.12.0.tgz#096ff57d3590d076f7d7561dbc9956fb0bb89fe1"
+  integrity sha512-mrC4y8n88BYvgcgzq9bvTlDgFyi2zuvzmPilRvRc3Uz1iIvq8mDhxJ0rHKFUNzPEScpDvJdIujqiDrulMqiudA==
+
 "@mdit/plugin-align@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@mdit/plugin-align/-/plugin-align-0.2.3.tgz#9ffb7f6e030071f711b34475e75ddeaf5f7144a7"
@@ -731,7 +736,7 @@
     "@vue/compiler-dom" "3.2.47"
     "@vue/shared" "3.2.47"
 
-"@vue/devtools-api@^6.4.5":
+"@vue/devtools-api@^6.4.5", "@vue/devtools-api@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz#98b99425edee70b4c992692628fa1ea2c1e57d07"
   integrity sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==
@@ -784,7 +789,7 @@
     "@vue/compiler-ssr" "3.2.47"
     "@vue/shared" "3.2.47"
 
-"@vue/shared@3.2.47", "@vue/shared@^3.2.45":
+"@vue/shared@3.2.47", "@vue/shared@^3.2.45", "@vue/shared@^3.2.47":
   version "3.2.47"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.47.tgz#e597ef75086c6e896ff5478a6bfc0a7aa4bbd14c"
   integrity sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==
@@ -821,7 +826,7 @@
     envinfo "^7.8.1"
     esbuild "^0.16.12"
 
-"@vuepress/client@2.0.0-beta.60", "@vuepress/client@^2.0.0-beta.60":
+"@vuepress/client@2.0.0-beta.60":
   version "2.0.0-beta.60"
   resolved "https://registry.yarnpkg.com/@vuepress/client/-/client-2.0.0-beta.60.tgz#978fa040e43b8dd4663d07e2b8dbbff7ff822f4d"
   integrity sha512-WU5VGeDp41A2dVXqp18YBggflIjTq68mA+s5TCz93wk+7elAmPAkWKcobQBYQgvsuwHyg9nWulZAfMN6OEygKQ==
@@ -829,6 +834,16 @@
     "@vue/devtools-api" "^6.4.5"
     "@vuepress/shared" "2.0.0-beta.60"
     vue "^3.2.45"
+    vue-router "^4.1.6"
+
+"@vuepress/client@^2.0.0-beta.61":
+  version "2.0.0-beta.61"
+  resolved "https://registry.yarnpkg.com/@vuepress/client/-/client-2.0.0-beta.61.tgz#d36321495924f19d468b71af48ae3a06ab626b93"
+  integrity sha512-C5QbdQkPsurEsKUkLclVucUAKMzBph9kHMUvfKHJqBaAsiXKYVLa61AICTJeyDkhTYF0faOjmpqmaElfMt1S9w==
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
+    "@vuepress/shared" "2.0.0-beta.61"
+    vue "^3.2.47"
     vue-router "^4.1.6"
 
 "@vuepress/core@2.0.0-beta.60":
@@ -979,6 +994,14 @@
   dependencies:
     "@mdit-vue/types" "^0.11.0"
     "@vue/shared" "^3.2.45"
+
+"@vuepress/shared@2.0.0-beta.61":
+  version "2.0.0-beta.61"
+  resolved "https://registry.yarnpkg.com/@vuepress/shared/-/shared-2.0.0-beta.61.tgz#7342602990ccf3a1a4aefcdbe8315b368ed5602b"
+  integrity sha512-NhOQ1FDr5lDSu5IinNlNNzrF+jGOZ+bMFUyAlCxlTvK9oY6aRBCNwV8dWme+yoh3/zviKHGu62Xp7J2hKAHNZA==
+  dependencies:
+    "@mdit-vue/types" "^0.12.0"
+    "@vue/shared" "^3.2.47"
 
 "@vuepress/theme-default@2.0.0-beta.60":
   version "2.0.0-beta.60"
