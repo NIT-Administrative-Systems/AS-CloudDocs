@@ -105,7 +105,6 @@ export default defineUserConfig({
                 children: [
                     'index.md',
                     'policies',
-                    'recommendations',
                     'workflow',
                 ].map(file => '/github/' + file),
             },
