@@ -96,7 +96,7 @@ Changes made directly to these branches **will be overwritten**. All code must b
 
 For a regular deployment, the branch from one environment lower is copied. For `qa` release, this means `develop` is copied. For a production release, `qa` is copied. 
 
-The exact steps needed to promote code to an environment should be documented on a per-repository basis. Here is an example for `develop` -> `qa`:
+The exact steps needed to promote code to an environment should be documented on a per-repository basis. This process should be as simple as copy-and-paste, and the exact branch names differ from repository-to-repository. Here is an example for `develop` -> `qa`:
 
 ```sh
 git fetch
@@ -105,14 +105,26 @@ git reset --hard origin/develop
 git push --force
 ```
 
-When deploying the `production` branch, you can tag the branch after it successfully deploys. This will give you an easy way to revert back to a previous release. 
-
 ### Deploying Code
 We want our environment branches to match what is deployed to their corresponding environment at all times. When an environment branch is updated, it should be automatically deployed to keep things in sync.
 
 There should be no way to deploy an environment branch to the wrong environment, and this step must not require you to manually trigger it. Each environment branch should either match it's deployed environment, or be in the process of deploying changes to get itself there.
 
-For ease of rollbacks, the deployment process can create tags. This may be desirable only for `production`. You should create the tag *after* a successful deployment; if it didn't successfully deploy, you probably don't care to roll back to it. 
+### Rolling Back
+For ease of rollbacks, the deployment process can create tags. This may be desirable only for `production`. The easiest naming convention for these tags would be `release_{timestamp}`.
+
+Ideally, your CI/CD pipeline should create the tag *after* a successful deployment; if it didn't successfully deploy, you probably don't care to roll back to it. 
+
+The process for rolling back to a tag called `origin/release-2023-06-01-164412` is:
+
+```sh
+git fetch
+git checkout production
+git reset --hard origin/release-2023-06-01-164412
+git push --force
+```
+
+The deployment pipeline would run as normal and re-deploy the environment.
 
 ### Hotfixes
 Sometimes, you need to promote an urgent bugfix from `develop` to `production`.
