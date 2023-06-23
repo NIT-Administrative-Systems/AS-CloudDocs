@@ -60,4 +60,4 @@ There are no (currently known[^1]) cases where internal is useful for us, so it 
 
 [^1]: But if you come up with a use-case, please submit a pull request!
 
-You should add your leads team as an admin for the repository after creating it. For private repositories, you need to add your own team with write permissions or else they can't work on it.
+You should add your team as an admin for the repository after creating it. For private repositories, this is particularly important: they will not be able to see the repository at all until this is done.
