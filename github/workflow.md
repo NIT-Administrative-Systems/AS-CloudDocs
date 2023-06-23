@@ -98,7 +98,9 @@ Changes made directly to these branches **will be overwritten**. All code must b
 
 For a regular deployment, the branch from one environment lower is copied. For `qa` release, this means `develop` is copied. For a production release, `qa` is copied. 
 
-The exact steps needed to promote code to an environment should be documented on a per-repository basis. This process should be as simple as copy-and-paste, and the exact branch names differ from repository-to-repository. Here is an example for `develop` -> `qa`:
+The exact steps needed to promote code to an environment should be documented on a per-repository basis. This process should be as simple as copy-and-paste, and the exact branch names differ from repository-to-repository; per-repository documentation will be the most reliable. 
+
+Here is an example for `develop` -> `qa`:
 
 ```sh
 git fetch
