@@ -20,7 +20,7 @@ Despite our best efforts, *these things happen* from time to time.
 Don't panic. We just need to fix it.
 :::
 
-First: until you have pushed a commit to GitHub, no incident has occurred, because the secret hasn't left your computer yet. You can amend the commit to remove secret.
+First: until you have pushed a commit to GitHub, no incident has occurred, because the secret hasn't left your computer yet. You can amend the commit to remove the secret.
 
 If you find a secret in the repository or push one yourself, notify the relevant lead/manager -- usually your own. Inform them what the secret is for, what it can access, and who it has been exposed to.
 

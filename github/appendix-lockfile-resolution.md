@@ -8,7 +8,7 @@ For example, if somebody installed v1.0.1 of a thing, it's possible that somebod
 You should not attempt to resolve these conflicts by editing the lockfiles. Instead, you can perform the merge, check the lockfile from `develop` out, and then let the package manager regenerate it. 
 
 ## Prerequisite
-For all package managers, begin by checkout out the pull request with the conflict. Merge the default branch (typically `develop`) and let the conflict happen.
+For all package managers, begin by checking out the pull request with the conflict. Merge the default branch (typically `develop`) and let the conflict happen.
 
 ```sh
 git fetch
