@@ -100,13 +100,12 @@ export default defineUserConfig({
                 ].map(file => '/security/' + file),
             },
             {
-                text: 'GitHub',
+                text: 'Git & GitHub',
                 collapsable: false,
                 children: [
-                    'settings-permissions',
-                    'repo-layout',
-                    'workflow',
+                    'index.md',
                     'policies',
+                    'workflow',
                 ].map(file => '/github/' + file),
             },
         ],
