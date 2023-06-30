@@ -14,7 +14,7 @@ Fargate is typically our preferred model, as it involves less configuration and 
 
 ## Key Terms
 | Term | Definition |
-| --------------- | -----------| ----------- |
+| --------------- | -----------|
 | Task Definition | The "blueprint": a template specifying the Docker images to use, cpu, memory, environment variables, ports, secrets, etc. |
 | Task | An application instance. Often there is one container per task, though we could also run multiple containers per task in order to run a sidecar for the application e.g. running a main container for the application traffic and another for detailed monitoring or metrics. |
 | Service | A service runs some number of copies of the task definition, providing horizontal scalability. If a task is unhealthy, the service will kill it and start a new task to guarantee the specified number of tasks are always running. |
