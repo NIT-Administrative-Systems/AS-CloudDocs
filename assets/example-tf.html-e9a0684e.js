@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-24d000e7","path":"/iac/example-tf.html","title":"Example Terraform Module","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1688564348000,"contributors":[{"name":"Michael Campbell","email":"40612477+mc0918@users.noreply.github.com","commits":1}]},"filePathRelative":"iac/example-tf.md"}');export{e as data};
