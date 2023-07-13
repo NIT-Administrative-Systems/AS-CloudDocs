@@ -36,7 +36,7 @@ For Example:
 	- 'php artisan db:seed --class=\\Database\\Seeders\\StakeholderSeeder --force'
 	- 'php artisan import:example:update'
 ```
-3) After inital build, go back into the vapor.yml and UNCOMMENT the seeing and imports lines from step 2.
+3) After inital build, go back into the vapor.yml and UNCOMMENT the seeding and imports lines from step 2.
 
 4) All total, you will send three requests to the SOC
    - new CNAME for AWS cert validation
@@ -45,10 +45,9 @@ For Example:
 
 5) After the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD console.
    - Go to https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps
-   - Select the appropriate app
-   - Go to 'Authentication' and add a Redirect URI call-back
-   - Go to 'Certificates & Secrets' to confirm a secret from that environment is in place
-   - Go to '
+   - Select the appropriate app.
+   - Go to 'Authentication' and add a Redirect URI call-back.
+   - Go to 'Certificates & Secrets' to confirm a secret from that environment is in place.
 
 ## Limitations
 Deploying an application on Vapor comes with the following limitations. 
