@@ -43,7 +43,12 @@ For Example:
    - new CNAME for Auth0 cert validation
    - DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
 
-5) after the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD!
+5) After the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD console.
+   - Go to https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps
+   - Select the appropriate app
+   - Go to 'Authentication' and add a Redirect URI call-back
+   - Go to 'Certificates & Secrets' to confirm a secret from that environment is in place
+   - Go to '
 
 ## Limitations
 Deploying an application on Vapor comes with the following limitations. 
