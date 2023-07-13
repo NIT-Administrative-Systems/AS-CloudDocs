@@ -24,9 +24,11 @@ Review the [Vapor documentation](https://docs.vapor.build/) for more information
 If adding a new environment to a branch (like playground env to prod branch):
 
 1) use the CLI to set up the new environment in the appropriate vapor account:
+```ini 
 	./vendor/bin/vapor team:switch			To switch to the correct vapor account
 	./vendor/bin/vapor env playground		WHERE 'playground' is the name of the new environment
-	
+```
+
 2) then update the vapor.yml to include the new environment, for the initial build COMMENT OUT seeding and imports,
 as the vapor command sequence doesn't validate before it tries to run, causing an error:
 	- 'php artisan db:seed --class=\\Database\\Seeders\\StakeholderSeeder --force'
