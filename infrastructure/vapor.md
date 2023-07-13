@@ -39,9 +39,9 @@ For Example:
 3) After inital build, go back into the vapor.yml and UNCOMMENT the seeing and imports lines from step 2.
 
 4) All total, you will send three requests to the SOC
-	a) new CNAME for AWS cert validation
-	b) new CNAME for Auth0 cert validation
-	c) DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
+   - new CNAME for AWS cert validation
+   - new CNAME for Auth0 cert validation
+   - DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
 
 5) after the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD!
 
