@@ -23,23 +23,23 @@ Review the [Vapor documentation](https://docs.vapor.build/) for more information
 
 If adding a new environment to a branch (like playground env to prod branch):
 
-	1) use the CLI to set up the new environment in the appropriate vapor account:
-		./vendor/bin/vapor team:switch			To switch to the correct vapor account
-		./vendor/bin/vapor env playground		WHERE 'playground' is the name of the new environment
-		
-	2) then update the vapor.yml to include the new environment, for the initial build COMMENT OUT seeding and imports,
- 	as the vapor command sequence doesn't validate before it tries to run, causing an error:
-	    	- 'php artisan db:seed --class=\\Database\\Seeders\\StakeholderSeeder --force'
-		- 'php artisan import:example:update'
-		
-	3) after inital build, go back into the vapor.yml and UNCOMMENT the seeing and imports lines from step 2
+1) use the CLI to set up the new environment in the appropriate vapor account:
+	./vendor/bin/vapor team:switch			To switch to the correct vapor account
+	./vendor/bin/vapor env playground		WHERE 'playground' is the name of the new environment
 	
-	4) all total, you will send three requests to the SOC
-		a) new CNAME for AWS cert validation
-		b) new CNAME for Auth0 cert validation
-		c) DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
+2) then update the vapor.yml to include the new environment, for the initial build COMMENT OUT seeding and imports,
+as the vapor command sequence doesn't validate before it tries to run, causing an error:
+	- 'php artisan db:seed --class=\\Database\\Seeders\\StakeholderSeeder --force'
+	- 'php artisan import:example:update'
 	
-	5) after the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD!
+3) after inital build, go back into the vapor.yml and UNCOMMENT the seeing and imports lines from step 2
+
+4) all total, you will send three requests to the SOC
+	a) new CNAME for AWS cert validation
+	b) new CNAME for Auth0 cert validation
+	c) DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
+
+5) after the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD!
 
 ## Limitations
 Deploying an application on Vapor comes with the following limitations. 
