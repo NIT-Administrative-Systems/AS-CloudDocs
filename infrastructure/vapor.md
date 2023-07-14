@@ -40,7 +40,7 @@ For Example:
 
 4) All total, you will send three requests to the SOC
    - new CNAME for AWS cert validation
-   - new CNAME for Auth0 cert validation
+   - new CNAME for Auth0 cert validation (See https://soap-docs.entapp.northwestern.edu/auths/overview.html for helpful hints using SOAP as the example.)
    - DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
 
 5) After the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD console.
