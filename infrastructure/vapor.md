@@ -21,6 +21,34 @@ You are free to terraform additional AWS resources (e.g. DynamoDB tables) for us
 
 Review the [Vapor documentation](https://docs.vapor.build/) for more information on Vapor-izing your app, what AWS resources are natively supported, and how to configure your `vapor.yml` file.
 
+If adding a new environment to a branch (like playground env to prod branch):
+
+1) Use the CLI to set up the new environment in the appropriate vapor account (This can currently only be done via the CLI.):
+```ini 
+	./vendor/bin/vapor team:switch			To switch to the correct vapor account
+	./vendor/bin/vapor env playground		WHERE 'playground' is the name of the new environment
+```
+
+2) Then update the vapor.yml to include the new environment, for the initial build COMMENT OUT seeding and imports,
+as the vapor command sequence doesn't validate before it tries to run, causing an error.
+```ini
+For Example:
+	- 'php artisan db:seed --class=\\Database\\Seeders\\StakeholderSeeder --force'
+	- 'php artisan import:example:update'
+```
+3) After inital build, go back into the vapor.yml and UNCOMMENT the seeding and imports lines from step 2.
+
+4) All total, you will send three requests to the SOC
+   - new CNAME for AWS cert validation
+   - new CNAME for Auth0 cert validation (See https://soap-docs.entapp.northwestern.edu/auths/overview.html for helpful hints using SOAP as the example.)
+   - DNS entry from ugly cloudfront address to pretty final URL   (Note that you do NOT need to send the custom domain that vapor creates.)
+
+5) After the new environment is built and you have the pretty URL back from SOC, don't forget to add the callback URL to AzureAD console.
+   - Go to https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps
+   - Select the appropriate app.
+   - Go to 'Authentication' and add a Redirect URI call-back.
+   - Go to 'Certificates & Secrets' to confirm a secret from that environment is in place.
+
 ## Limitations
 Deploying an application on Vapor comes with the following limitations. 
 
