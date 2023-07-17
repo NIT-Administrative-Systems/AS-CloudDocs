@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-40edcf6c","path":"/iac/tf-move.html","title":"Terraform State Move","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1689599987000,"contributors":[{"name":"Jason Miller","email":"jason.miller@northwestern.edu","commits":1}]},"filePathRelative":"iac/tf-move.md"}');export{e as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-48e3a738","path":"/infrastructure/aws-account-design.html","title":"AWS Account Structure","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1689599987000,"contributors":[{"name":"Jason Miller","email":"jason.miller@northwestern.edu","commits":1}]},"filePathRelative":"infrastructure/aws-account-design.md"}');export{t as data};
