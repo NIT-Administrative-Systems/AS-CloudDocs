@@ -5,7 +5,7 @@ SES sends email, but is not a mailing list or marketing platform -- it does not 
 
 The service reports basic *technical* statistics: successful deliveries, bounces, and a few others. SES does not provide open rates or any meaningful analytics. If you want that data, you should consider a 3rd-party service like MailChimp (bulk mail) or MailGun (transactional mail) -- *neither of which we currently have a contract with*!
 
-The most important thing to know when using SES is that it is available in a limited set of regions. Our SES setup & sending is all done in `us-east-1`. If you see errors about an SES domain not resolving, make sure you're not trying to use the `us-east-2` SES API endpoint.
+The most important thing to know when using SES is that it is available in a limited set of regions. Our SES setup & sending is all done in `us-east-1` and `us-east-2`. (SES used to be available only in us-east-1.  We have since set up us-east-2, which should be used going forward.)
 
 ## Usage
 Using SES from another AWS service, like Lambda, is easy: you add a policy to the execution role that permits it to send from the `northwestern.edu` domain. The ARN for the verified SES domain resource is published in the account shared resources IaC module, and you will need to access the ARN to write the IAM policy correctly.
@@ -78,3 +78,15 @@ $ dig +short -t txt northwestern.edu | grep amazonses
 The [DKIM](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) instructions in the console should be followed, as the way DKIM works supports our prod/nonprod AWS account setup out of the box. 
 
 To set up [SPF](https://en.wikipedia.org/wiki/Sender_Policy_Framework), adjust the domain's SPF record [according to Amazon's documentation](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-spf.html#send-email-authentication-spf-records) by adding an `include:amazonses.com` policy.
+
+:::tip Helpful Tip
+
+If you should need to create SES in a new region:
+- Update the ses.tf file in the ADO-shared-resources-iac repo, as well as the outputs for sandbox, nonprod, and prod.
+- Deploy those changes to each environment.
+- Once deployed, go to SES in the console (be sure you are in the correct region!) and click on "Verified Identities", then click on the domain you used when building the SES resource.
+- Within the domain, click on "Publish DNS Records".  These are CNAMEs/Values that need to be sent to the SOC to be entered into the DNS.
+- Once they are entered, verify the domain.
+- And once the domain is verified, open a ticket with Information Technology Cyberinfrastructure Platform Services for the SES service to be made active.  (This has to be requested through our vendor; we can't do it ourselves. It is one of the few places in AWS that require an approval step before it can be activiated in a live environment.)
+
+:::
